@@ -53,6 +53,33 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+	<style>
+		/* Home backgound image slideshow */
+		.slideshow-container {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		
+		.slide {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			opacity: 0;
+			transition: opacity 1.5s ease-in-out;
+		}
+		
+		.slide.active {
+			opacity: 1;
+		}
+
+
+	</style>
+	
+
 	</head>
 	<body>
 		<div id="fh5co-wrapper">
@@ -96,27 +123,33 @@
 	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
+			<div class="fh5co-cover">
+				<div class="slideshow-container">
+					<div class="slide" style="background-image: url('images/zibra&buffalo.jpg');"></div>
+					<div class="slide" style="background-image: url('images/elephantInMountain.jpg');"></div>
+					<div class="slide" style="background-image: url('images/preparedFood.png');"></div>
+					<div class="slide" style="background-image: url('images/sunsetDesert.jpg');"></div>
+					<div class="slide" style="background-image: url('images/sunsetDrive.jpg');"></div>
+				</div>
 				<div class="desc">
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-5 col-md-5">
-								<img src="images/logo.png"/>
+								<img src="images/logo.png" />
 							</div>
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
 									<h2>The best and yet affordable travel agency in Mzansi</h2>
 									<h3>Below is a summary of what we offer as services</h3>
-									
-									<p><a class="btn btn-primary btn-lg" href="brochures.html">Get Started</a></p>
+									<p><a class="btn btn-primary btn-lg" href="pricings.html">Get Started</a></p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
+		
 		
 		<!--div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
@@ -296,80 +329,86 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul id="fh5co-destination-list" class="animate-box">
-							<li class="one-forth text-center" style="background-image: url(images/place-1.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/johannesburg.jpg); ">
+								<a href="destination/johannesburg.html">
 									<div class="case-studies-summary">
 										<h2>Johannesburg</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-2.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/capeTown2.jpg); ">
+								<a href="destination/capeTown.html">
 									<div class="case-studies-summary">
 										<h2>Cape Town</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-3.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/giyani.jpg); ">
+								<a href="destination/giyani.html">
 									<div class="case-studies-summary">
 										<h2>Giyani</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-4.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/thohoyandou.png); ">
+								<a href="destination/thohoyandou.html">
 									<div class="case-studies-summary">
 										<h2>Thohoyandou</h2>
 									</div>
 								</a>
 							</li>
 
-							<li class="one-forth text-center" style="background-image: url(images/place-5.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/japan.jpg); ">
+								<a href="destination/japan.html">
 									<div class="case-studies-summary">
 										<h2>Japan</h2>
 									</div>
 								</a>
 							</li>
 							<li class="one-half text-center">
-								<div class="title-bg">
+								<div class="title-bg" style=" 
+									background-image: url(images/africaCollage2.jpg);
+									background-size: cover; 
+									background-position: center; 
+									background-repeat: no-repeat; 
+									height: 300px; ">
 									<div class="case-studies-summary">
 										<h2>Most Popular Destinations</h2>
-										<span><a href="#">View All Destinations</a></span>
+										<span><a href="destination/allDestination.html">View All Destinations</a></span>
 									</div>
 								</div>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-6.jpg); ">
-								<a href="#">
+							
+							<li class="one-forth text-center" style="background-image: url(images/mbombela.png); background-size: cover; ">
+								<a href="destination/mbombela.html">
 									<div class="case-studies-summary">
 										<h2>Mbombela</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-7.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/polokwane.jpg); ">
+								<a href="destination/polokwane.html">
 									<div class="case-studies-summary">
 										<h2>Polokwane</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-8.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/tzaneen.jpg); ">
+								<a href="destination/tzaneen.html">
 									<div class="case-studies-summary">
 										<h2>Tzaneen</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-9.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/pretoria.jpg); ">
+								<a href="destination/pretoria.html">
 									<div class="case-studies-summary">
 										<h2>Pretoria</h2>
 									</div>
 								</a>
 							</li>
-							<li class="one-forth text-center" style="background-image: url(images/place-10.jpg); ">
-								<a href="#">
+							<li class="one-forth text-center" style="background-image: url(images/durban.jpg); ">
+								<a href="destination/durban.html">
 									<div class="case-studies-summary">
 										<h2>Durban</h2>
 									</div>
@@ -445,7 +484,12 @@
 			</div>
 		</div-->
 		<!-- fh5co-blog-section -->
-		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
+		<div id="fh5co-testimonial" style=" 
+			background-image: url(images/giraffeOnALookOut.jpg);
+			background-size: cover; 
+			background-position: center; 
+			background-repeat: no-repeat; 
+			height: auto;">>
 			<div class="container">
 				<div class="row animate-box">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -539,13 +583,21 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Freelance Options</h3>
-						<p>Please enquire</p>
+						<h3>Freelance Opportunities</h3>
+						<p>We are always on the lookout for passionate and skilled freelancers to help us bring unique travel experiences to life. Join us as:</p>
+						<ul style="list-style-type: none; padding: 0; line-height: 1.8;">
+							<li>🌍 <strong>Freelance Tour Guides</strong> - Lead visitors through Africa's breathtaking destinations.</li>
+							<li>📷 <strong>Travel Photographers</strong> - Capture stunning moments and landscapes for our clients.</li>
+							<li>✍️ <strong>Content Creators</strong> - Share travel stories, blogs, and destination guides.</li>
+							<li>🗺️ <strong>Travel Consultants</strong> - Help customise travel packages for clients.</li>
+						</ul>
+						<p>If you’re interested in collaborating, get in touch with us today!</p>
+						<a href="contact.html" class="btn btn-primary">Contact Us</a>
 					</div>
 				</div>
-				
 			</div>
 		</div>
+		
 		
 		
 	</div>
@@ -610,7 +662,7 @@
 							<p class="fh5co-social-icons">
 								<a href="https://www.twitter.com/traveloguechipp" target="blank"><i class="icon-twitter2"></i></a>
 								<a href="https://www.facebook.com/africantravelogue.co.za" target="blank"><i class="icon-facebook2"></i></a>
-								<a href="#"><i class="icon-instagram"></i></a>
+								<a href="https://www.instagram.com/curiocity.africa/"><i class="icon-instagram"></i></a>
 							</p>
 							<p>Copyright 2022 African Travelogue. All Rights Reserved. <br>
 							Made with <i class="icon-heart3"></i> by <a href="http://gamechangersites.co.za" target="_blank">Game Changer Sites</a> </p>
@@ -670,6 +722,31 @@
 	})();
 	</script>
 	<!--End of Tawk.to Script-->
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const slides = document.querySelectorAll(".slide");
+		let currentSlide = 0;
+	
+		function showSlide(index) {
+			slides.forEach((slide, i) => {
+				slide.classList.remove("active");
+				if (i === index) {
+					slide.classList.add("active");
+				}
+			});
+		}
+	
+		function nextSlide() {
+			currentSlide = (currentSlide + 1) % slides.length;
+			showSlide(currentSlide);
+		}
+	
+		// Show the first slide and start the slideshow
+		showSlide(currentSlide);
+		setInterval(nextSlide, 5000); // Change slide every 5 seconds
+	});
+	</script>	
+
 	</body>
 </html>
 
