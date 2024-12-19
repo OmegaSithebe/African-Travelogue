@@ -51,6 +51,71 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+		<style>
+		/* Booking Form Section */
+		.booking-form {
+			max-width: 600px;
+			margin: 50px auto;
+			padding: 30px;
+			background-color: white;
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			font-family: 'Roboto', Arial, sans-serif;
+		}
+
+		.booking-form label {
+			display: block;
+			font-size: 1.5rem;
+			color: #333;
+			margin-top: 15px;
+		}
+
+		.booking-form input, 
+		.booking-form select {
+			width: 100%;
+			padding: 12px;
+			margin-top: 5px;
+			font-size: 1.5rem;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #f9f9f9;
+			transition: border-color 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.booking-form input:focus, 
+		.booking-form select:focus {
+			border-color: orange;
+			box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+			outline: none;
+		}
+
+		.booking-form button {
+			width: 100%;
+			padding: 14px;
+			margin-top: 20px;
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: white;
+			background-color: orange;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.booking-form button:hover {
+			background-color: #e67e22;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.booking-form {
+				padding: 20px;
+			}
+		}
+		</style>
+
+
 	</head>
 	<body>
 		<div id="fh5co-wrapper">
@@ -100,6 +165,45 @@
 						<p>Please fill in the form below to book your break</p>
 					</div>
 				</div>
+
+				<!-- Booking Form -->
+				<section class="booking-form">
+					<form id="booking-form">
+						<label for="client-name">Client's Name & Surname:</label>
+						<input type="text" id="client-name" name="client_name" required>
+
+						<label for="contact-details">Contact Details (Email or Cellphone):</label>
+						<input 
+							type="text" 
+							id="contact-details" 
+							name="contact_details" 
+							placeholder="Enter email or 10-digit phone number" 
+							pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
+							title="Enter a valid email or 10-digit phone number" 
+							required
+						>
+
+						<label for="program-request">Program Request:</label>
+						<input type="text" id="program-request" name="program_request" required>
+
+						<label for="amount-to-be-paid">Amount to be Paid:</label>
+						<input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" required>
+
+						<label for="mode-of-receipt">Mode of Receipt:</label>
+						<select id="mode-of-receipt" name="mode_of_receipt" required>
+							<option value="" disabled selected>Select Receipt Mode</option>
+							<option value="email">Email</option>
+							<option value="SMS">SMS</option>
+						</select>
+
+						<label for="online-signature">Online Signature:</label>
+						<input type="text" id="online-signature" name="online_signature" placeholder="Type your name as a signature" required>
+
+						<button type="submit">Submit Booking</button>
+					</form>
+				</section>
+
+
 				<div class="row row-bottom-padded-md">
 					<!--<a href="#"><img class="img-responsive" src="images/brochure/1.jpeg" alt=""></a>-->
 				</div>
@@ -224,6 +328,23 @@
 		})();
 		</script>
 		<!--End of Tawk.to Script-->
+
+		<script>
+			// Add an event listener to handle the form submission
+			document.getElementById('booking-form').addEventListener('submit', function(event) {
+				// Prevent the default form submission behavior
+				event.preventDefault();
+		
+				// Get the selected mode of receipt
+				const modeOfReceipt = document.getElementById('mode-of-receipt').value;
+		
+				// Display the confirmation message
+				alert(`Thanks, we will be in touch via ${modeOfReceipt}.`);
+		
+				// Reset the form fields
+				event.target.reset();
+			});
+		</script>
 	</body>
 </html>
 

@@ -51,6 +51,56 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+	<style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+		        /* Style for the map container */
+				#map {
+            width: 100%;
+            height: 400px; /* Adjust height as needed */
+            border: none;
+            margin: 20px 0;
+        }
+
+        /* Responsive iframe container */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Aspect ratio: 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+
 	</head>
 	<body>
 		<div id="fh5co-wrapper">
@@ -100,34 +150,34 @@
 						<p>Get in touch with us.</p>
 					</div>
 				</div>
-				<form method="post" action="send.php">
-					<div class="row animate-box">
-						<div class="col-md-6">
-							<h3 class="section-title">Contact Details</h3>
-							<!--p>.</p-->
-							<ul class="contact-info">
-								<li><i class="icon-location-pin"></i>103A Zandspruit. Honeydew</li>
-								<li><i class="icon-phone2"></i>+27 82 840 8864</li>
-								<li><i class="icon-phone2"></i>+27 72 069 0340</li>
-								<li><i class="icon-mail"></i><a href="mailto: admin@africantravelogue.co.za">admin@africantravelogue.co.za</a></li>
-								<li><i class="icon-globe2"></i><a href="https://africantravelogue.co.za/">www.africantravelogue.co.za</a></li>
-							</ul>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
+				<div class="row animate-box">
+					<div class="col-md-6">
+						<h3 class="section-title">Contact Details</h3>
+						<ul class="contact-info">
+							<li><i class="icon-location-pin"></i>103A Zandspruit. Honeydew</li>
+							<li><i class="icon-phone2"></i>+27 82 840 8864</li>
+							<li><i class="icon-phone2"></i>+27 72 069 0340</li>
+							<li><i class="icon-mail"></i><a href="mailto: admin@africantravelogue.co.za">admin@africantravelogue.co.za</a></li>
+							<li><i class="icon-globe2"></i><a href="https://africantravelogue.co.za/">www.africantravelogue.co.za</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<!-- The Contact Form -->
+							<form id="contact-form">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" id="name" name="name" class="form-control" placeholder="Name">
+										<input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text"  id="email" name="email" class="form-control" placeholder="Email">
+										<input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea name="" id="message" name="message" class="form-control" cols="30" rows="7" placeholder="Message"></textarea>
+										<textarea id="message" name="message" class="form-control" cols="30" rows="7" placeholder="Message" required></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -135,20 +185,21 @@
 										<input type="submit" value="Send Message" class="btn btn-primary">
 									</div>
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div id="map" class="fh5co-map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7167.19478431624!2d27.91789209267475!3d-26.07941106712346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e957589c5ac69e3%3A0x3684c6fd8a9d4218!2sHoneydew%2C%20Roodepoort%2C%202040!5e0!3m2!1sen!2sza!4v1648641012826!5m2!1sen!2sza" width="800" height="600" style="border:0;" 
-			allowfullscreen="" 
-			loading="lazy" 
-			referrerpolicy="no-referrer-when-downgrade">
-		</iframe>
-	</div>
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7167.19478431624!2d27.91789209267475!3d-26.07941106712346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e957589c5ac69e3%3A0x3684c6fd8a9d4218!2sHoneydew%2C%20Roodepoort%2C%202040!5e0!3m2!1sen!2sza!4v1648641012826!5m2!1sen!2sza"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
 		<!-- END map -->
 
 		<footer>
@@ -228,7 +279,19 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-
+	<script>
+		// Handle form submission
+		document.getElementById('contact-form').addEventListener('submit', function(event) {
+			// Prevent the form from redirecting or refreshing the page
+			event.preventDefault();
+	
+			// Display a success message
+			alert('Thank you for your message! We will get back to you shortly.');
+	
+			// Reset the form
+			event.target.reset();
+		});
+	</script>
 
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -261,7 +324,7 @@
 
 
 	<!--Start of Tawk.to Script-->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 	(function(){
 	var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -271,8 +334,10 @@
 	s1.setAttribute('crossorigin','*');
 	s0.parentNode.insertBefore(s1,s0);
 	})();
-	</script>
+	</script> -->
 	<!--End of Tawk.to Script-->
+
+
 	</body>
 </html>
 

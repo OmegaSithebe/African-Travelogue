@@ -56,7 +56,7 @@
         font-size: 1.2rem;
         z-index: 2;
         color: #c9c9c9;
-    }Mbombela
+    }
 
     /* Section Styling */
     section {
@@ -115,6 +115,14 @@
         padding: 30px;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .booking-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
     }
 
     .booking-form form {
@@ -123,18 +131,24 @@
     }
 
     .booking-form label {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         font-weight: bold;
         color: #444;
     }
 
     .booking-form input,
+    .booking-form select,
     .booking-form button {
         padding: 10px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 1rem;
+    }
+
+    .booking-form input::placeholder {
+        font-style: italic;
+        color: #aaa;
     }
 
     .booking-form button {
@@ -148,6 +162,7 @@
     .booking-form button:hover {
         background-color: #e65c50;
     }
+
 
     /* Footer Styling */
     footer {
@@ -167,48 +182,68 @@
     <!-- Header Section -->
     <header>
         <h1>Discover Mbombela</h1>
-        <p>Explore the vibrant city of Mbombela, South Africa’s economic hub.</p>
+        <p>Visit Mbombela, the gateway to wildlife safaris and breathtaking natural beauty.</p>
     </header>
 
     <!-- High-Quality Images -->
     <section class="gallery">
-        <img src="../images/johannesburg1.jpg" alt="Mbombela City View">
-        <img src="../images/johannesburg2.jpg" alt="Mbombela Skyline">
+        <img src="../images/mbombelaMountain.jpg" alt="Johannesburg City View">
+        <img src="../images/mbomelaSkyline.png" alt="Johannesburg Skyline">
     </section>
 
     <!-- Popular Attractions -->
     <section class="attractions">
         <h2>Popular Attractions</h2>
         <ul>
-            <li><b>Gold Reef City:</b> A world-class theme park and historical site.</li>
-            <li><b>Constitution Hill:</b> Learn about South Africa's history and democracy.</li>
-            <li><b>Maboneng Precinct:</b> A hub for creativity, culture, and urban life.</li>
+            <li><b>Kruger National Park: One of Africa's largest game reserves for safari adventures.  </li>
+            <li><b>Lowveld National Botanical Garden: A lush garden with waterfalls and rare plant species. </li>
+            <li><b>Sudwala Caves: Explore the world’s oldest known caves.  </li>
+            <li><b>Emnotweni Casino: Entertainment, dining, and gaming under one roof. </li>
+            <li><b>Chimp Eden: A sanctuary for rescued chimpanzees, run by the Jane Goodall Institute.</li>
         </ul>
     </section>
 
     <!-- Cultural Highlights -->
     <section class="cultural-highlights">
         <h2>Cultural Highlights</h2>
-        <p>Johannesburg, also known as Jozi, is rich in art, culture, and history. From the Apartheid Museum to Soweto’s heritage, the city tells stories of resilience and transformation.</p>
+        <p>Mbombela offers a rich tapestry of Swazi and Ndebele heritage, where vibrant beadwork, intricate patterns, and traditional dances showcase the region’s cultural identity. The local cuisine, influenced by traditional African flavors, is a must-try for visitors.</p>
     </section>
 
     <!-- Booking Form -->
     <section class="booking-form">
-        <h2>Book Your Trip to Johannesburg</h2>
-        <form action="submit_booking.php" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+        <h2>Book Your Trip to Mbombela</h2>
+        <form id="booking-form">
+            <label for="client-name">Client's Name & Surname:</label>
+            <input type="text" id="client-name" name="client_name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="contact-details">Contact Details (Email or Cellphone):</label>
+            <input 
+                type="text" 
+                id="contact-details" 
+                name="contact_details" 
+                placeholder="Enter email or 10-digit phone number" 
+                pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
+                title="Enter a valid email or 10-digit phone number" 
+                required
+            >
 
-            <label for="travel-dates">Preferred Travel Dates:</label>
-            <input type="date" id="travel-dates" name="travel_dates" required>
+            <label for="program-request">Program Request:</label>
+            <input type="text" id="program-request" name="program_request" required>
 
-            <label for="guests">Number of Guests:</label>
-            <input type="number" id="guests" name="guests" min="1" required>
+            <label for="amount-to-be-paid">Amount to be Paid:</label>
+            <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" required>
 
-            <button type="submit">Book Now</button>
+            <label for="mode-of-receipt">Mode of Receipt:</label>
+            <select id="mode-of-receipt" name="mode_of_receipt" required>
+                <option value="" disabled selected>Select Receipt Mode</option>
+                <option value="email">Email</option>
+                <option value="SMS">SMS</option>
+            </select>
+
+            <label for="online-signature">Online Signature:</label>
+            <input type="text" id="online-signature" name="online_signature" placeholder="Type your name as a signature" required>
+
+            <button type="submit">Submit Booking</button>
         </form>
     </section>
 
@@ -216,5 +251,23 @@
     <footer>
         <p>&copy; 2024 African Travelogue. All Rights Reserved.</p>
     </footer>
+
+
+    <script>
+        // Add an event listener to handle the form submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+    
+            // Get the selected mode of receipt
+            const modeOfReceipt = document.getElementById('mode-of-receipt').value;
+    
+            // Display the confirmation message
+            alert(`Thanks, we will be in touch via ${modeOfReceipt}.`);
+    
+            // Reset the form fields
+            event.target.reset();
+        });
+    </script>
 </body>
 </html>

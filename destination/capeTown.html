@@ -115,6 +115,14 @@
         padding: 30px;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .booking-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
     }
 
     .booking-form form {
@@ -123,18 +131,24 @@
     }
 
     .booking-form label {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         font-weight: bold;
         color: #444;
     }
 
     .booking-form input,
+    .booking-form select,
     .booking-form button {
         padding: 10px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 1rem;
+    }
+
+    .booking-form input::placeholder {
+        font-style: italic;
+        color: #aaa;
     }
 
     .booking-form button {
@@ -172,43 +186,70 @@
 
     <!-- High-Quality Images -->
     <section class="gallery">
-        <img src="../images/johannesburg1.jpg" alt="Cape Town City View">
-        <img src="../images/johannesburg2.jpg" alt="Cape Town Skyline">
+        <img src="../images/capetownTours.jpg" alt="Cape Town City View">
+        <img src="../images/capetowmGuide.jpg" alt="Cape Town Skyline">
     </section>
 
     <!-- Popular Attractions -->
     <section class="attractions">
         <h2>Popular Attractions</h2>
         <ul>
-            <li><b>Gold Reef City:</b> A world-class theme park and historical site.</li>
-            <li><b>Constitution Hill:</b> Learn about South Africa's history and democracy.</li>
-            <li><b>Maboneng Precinct:</b> A hub for creativity, culture, and urban life.</li>
+            <li><b>Table Mountain National Park</b>Experience panoramic views of the city and coastline from the iconic mountain</li>
+            <li><b>Robben Island Museum: </b> Learn about Nelson Mandela's legacy and South Africa's history.  </li>
+            <li><b>Kirstenbosch National Botanical Garden:</b> A beautiful garden showcasing indigenous plants.  </li>
+            <li><b>V&A Waterfront:</b> A vibrant hub of shopping, dining, and entertainment.  </li>
+            <li><b>Cape Point Nature Reserve: </b> Visit the rugged cliffs and scenic trails at the tip of Africa.   </li>
+            <li><b>Boulders Beach: </b> Home to a unique colony of African penguins. </li>
+            
+ 
+ 
+
+
+
         </ul>
     </section>
 
     <!-- Cultural Highlights -->
     <section class="cultural-highlights">
         <h2>Cultural Highlights</h2>
-        <p>Johannesburg, also known as Jozi, is rich in art, culture, and history. From the Apartheid Museum to Soweto’s heritage, the city tells stories of resilience and transformation.</p>
+        <p>Cape Town is a cultural hub, blending Cape Malay, Dutch, and Xhosa influences. The Bo-Kaap neighborhood showcases colorful houses and Cape Malay cuisine, while Robben Island serves as a poignant reminder of South Africa's struggle for freedom. Local art, music, and wine traditions reflect the city's rich heritage.</p>
     </section>
 
-    <!-- Booking Form -->
-    <section class="booking-form">
+     <!-- Booking Form -->
+     <section class="booking-form">
         <h2>Book Your Trip to Cape Town</h2>
-        <form action="submit_booking.php" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+        <form id="booking-form">
+            <label for="client-name">Client's Name & Surname:</label>
+            <input type="text" id="client-name" name="client_name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="contact-details">Contact Details (Email or Cellphone):</label>
+            <input 
+                type="text" 
+                id="contact-details" 
+                name="contact_details" 
+                placeholder="Enter email or 10-digit phone number" 
+                pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
+                title="Enter a valid email or 10-digit phone number" 
+                required
+            >
 
-            <label for="travel-dates">Preferred Travel Dates:</label>
-            <input type="date" id="travel-dates" name="travel_dates" required>
+            <label for="program-request">Program Request:</label>
+            <input type="text" id="program-request" name="program_request" required>
 
-            <label for="guests">Number of Guests:</label>
-            <input type="number" id="guests" name="guests" min="1" required>
+            <label for="amount-to-be-paid">Amount to be Paid:</label>
+            <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" required>
 
-            <button type="submit">Book Now</button>
+            <label for="mode-of-receipt">Mode of Receipt:</label>
+            <select id="mode-of-receipt" name="mode_of_receipt" required>
+                <option value="" disabled selected>Select Receipt Mode</option>
+                <option value="email">Email</option>
+                <option value="SMS">SMS</option>
+            </select>
+
+            <label for="online-signature">Online Signature:</label>
+            <input type="text" id="online-signature" name="online_signature" placeholder="Type your name as a signature" required>
+
+            <button type="submit">Submit Booking</button>
         </form>
     </section>
 
@@ -216,5 +257,23 @@
     <footer>
         <p>&copy; 2024 African Travelogue. All Rights Reserved.</p>
     </footer>
+
+
+    <script>
+        // Add an event listener to handle the form submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+    
+            // Get the selected mode of receipt
+            const modeOfReceipt = document.getElementById('mode-of-receipt').value;
+    
+            // Display the confirmation message
+            alert(`Thanks, we will be in touch via ${modeOfReceipt}.`);
+    
+            // Reset the form fields
+            event.target.reset();
+        });
+    </script>
 </body>
 </html>

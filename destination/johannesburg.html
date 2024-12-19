@@ -187,8 +187,8 @@
 
     <!-- High-Quality Images -->
     <section class="gallery">
-        <img src="../images/johannesburg1.jpg" alt="Johannesburg City View">
-        <img src="../images/johannesburg2.jpg" alt="Johannesburg Skyline">
+        <img src="../images/Johannesburg-day-tours.jpg" alt="Johannesburg City View">
+        <img src="../images/johannesburgSkyline.jpg" alt="Johannesburg Skyline">
     </section>
 
     <!-- Popular Attractions -->
@@ -209,8 +209,8 @@
 
     <!-- Booking Form -->
     <section class="booking-form">
-        <h2>Program Booking Form</h2>
-        <form action="submit_booking.php" method="POST">
+        <h2>Book Your Trip to Johannesburg</h2>
+        <form id="booking-form">
             <label for="client-name">Client's Name & Surname:</label>
             <input type="text" id="client-name" name="client_name" required>
 
@@ -235,7 +235,7 @@
             <select id="mode-of-receipt" name="mode_of_receipt" required>
                 <option value="" disabled selected>Select Receipt Mode</option>
                 <option value="email">Email</option>
-                <option value="hardcopy">Hard Copy</option>
+                <option value="SMS">SMS</option>
             </select>
 
             <label for="online-signature">Online Signature:</label>
@@ -245,11 +245,27 @@
         </form>
     </section>
 
-
-
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 African Travelogue. All Rights Reserved.</p>
     </footer>
+
+
+    <script>
+        // Add an event listener to handle the form submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+    
+            // Get the selected mode of receipt
+            const modeOfReceipt = document.getElementById('mode-of-receipt').value;
+    
+            // Display the confirmation message
+            alert(`Thanks, we will be in touch via ${modeOfReceipt}.`);
+    
+            // Reset the form fields
+            event.target.reset();
+        });
+    </script>
 </body>
 </html>

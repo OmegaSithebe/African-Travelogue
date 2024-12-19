@@ -109,12 +109,20 @@
         transform: scale(1.05);
     }
 
-    /* Booking Form */
-    .booking-form {
+/* Booking Form */
+.booking-form {
         background-color: #f8f9fa;
         padding: 30px;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .booking-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
     }
 
     .booking-form form {
@@ -123,18 +131,24 @@
     }
 
     .booking-form label {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         font-weight: bold;
         color: #444;
     }
 
     .booking-form input,
+    .booking-form select,
     .booking-form button {
         padding: 10px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 1rem;
+    }
+
+    .booking-form input::placeholder {
+        font-style: italic;
+        color: #aaa;
     }
 
     .booking-form button {
@@ -172,43 +186,64 @@
 
     <!-- High-Quality Images -->
     <section class="gallery">
-        <img src="../images/johannesburg1.jpg" alt="Japan City View">
-        <img src="../images/johannesburg2.jpg" alt="Japan Skyline">
+        <img src="../images/japan-tokyo-night-skyline-1024.jpg" alt="Japan City View">
+        <img src="../images/Japan_hero.jpg" alt="Japan Skyline">
     </section>
 
     <!-- Popular Attractions -->
     <section class="attractions">
         <h2>Popular Attractions</h2>
         <ul>
-            <li><b>Gold Reef City:</b> A world-class theme park and historical site.</li>
-            <li><b>Constitution Hill:</b> Learn about South Africa's history and democracy.</li>
-            <li><b>Maboneng Precinct:</b> A hub for creativity, culture, and urban life.</li>
+            <li><b>Mount Fuji:</b> Japan’s iconic volcano and a UNESCO World Heritage Site. </li>
+            <li><b>Kyoto Temples:</b> Explore beautiful historic temples like Kinkaku-ji (Golden Pavilion).</li>
+            <li><b>Tokyo Skytree:</b> Japan's tallest tower offering stunning city views.  </li>
+            <li><b>Ueno Park:</b> Famous for cherry blossoms in spring and cultural museums.</li>
+            <li><b>Hiroshima Peace Memorial:</b> A moving tribute to Hiroshima’s history and resilience. </li>
+            <li><b>Fushimi Inari Shrine:</b> Walk through the vibrant red torii gates.</li> 
         </ul>
     </section>
 
     <!-- Cultural Highlights -->
     <section class="cultural-highlights">
         <h2>Cultural Highlights</h2>
-        <p>Johannesburg, also known as Jozi, is rich in art, culture, and history. From the Apartheid Museum to Soweto’s heritage, the city tells stories of resilience and transformation.</p>
+        <p>Japan blends ancient traditions with modern innovations. Tea ceremonies, kabuki theater, and sumo wrestling offer glimpses into Japan’s heritage, while cherry blossom festivals celebrate nature’s beauty. Shinto shrines and Buddhist temples coexist alongside futuristic architecture, reflecting the country’s cultural harmony.</p>
     </section>
 
-    <!-- Booking Form -->
-    <section class="booking-form">
-        <h2>Book Your Trip to Johannesburg</h2>
-        <form action="submit_booking.php" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+     <!-- Booking Form -->
+     <section class="booking-form">
+        <h2>Book Your Trip to Japan</h2>
+        <form id="booking-form">
+            <label for="client-name">Client's Name & Surname:</label>
+            <input type="text" id="client-name" name="client_name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="contact-details">Contact Details (Email or Cellphone):</label>
+            <input 
+                type="text" 
+                id="contact-details" 
+                name="contact_details" 
+                placeholder="Enter email or 10-digit phone number" 
+                pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
+                title="Enter a valid email or 10-digit phone number" 
+                required
+            >
 
-            <label for="travel-dates">Preferred Travel Dates:</label>
-            <input type="date" id="travel-dates" name="travel_dates" required>
+            <label for="program-request">Program Request:</label>
+            <input type="text" id="program-request" name="program_request" required>
 
-            <label for="guests">Number of Guests:</label>
-            <input type="number" id="guests" name="guests" min="1" required>
+            <label for="amount-to-be-paid">Amount to be Paid:</label>
+            <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" required>
 
-            <button type="submit">Book Now</button>
+            <label for="mode-of-receipt">Mode of Receipt:</label>
+            <select id="mode-of-receipt" name="mode_of_receipt" required>
+                <option value="" disabled selected>Select Receipt Mode</option>
+                <option value="email">Email</option>
+                <option value="SMS">SMS</option>
+            </select>
+
+            <label for="online-signature">Online Signature:</label>
+            <input type="text" id="online-signature" name="online_signature" placeholder="Type your name as a signature" required>
+
+            <button type="submit">Submit Booking</button>
         </form>
     </section>
 
@@ -216,5 +251,23 @@
     <footer>
         <p>&copy; 2024 African Travelogue. All Rights Reserved.</p>
     </footer>
+
+
+    <script>
+        // Add an event listener to handle the form submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+    
+            // Get the selected mode of receipt
+            const modeOfReceipt = document.getElementById('mode-of-receipt').value;
+    
+            // Display the confirmation message
+            alert(`Thanks, we will be in touch via ${modeOfReceipt}.`);
+    
+            // Reset the form fields
+            event.target.reset();
+        });
+    </script>
 </body>
 </html>
