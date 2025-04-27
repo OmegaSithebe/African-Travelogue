@@ -263,7 +263,7 @@
 								<a href="https://www.facebook.com/africantravelogue.co.za" target="blank"><i class="icon-facebook2"></i></a>
 								<a href="#"><i class="icon-instagram"></i></a>
 							</p>
-							<p>Copyright 2022 African Travelogue. All Rights Reserved. <br>
+							<p class="copyright-text">&copy; <span id="current-year"></span> African Travelogue. All Rights Reserved. <br>
 							Made with <i class="icon-heart3"></i> by <a href="http://gamechangersites.co.za" target="_blank">Game Changer Sites</a> </p>
 						</div>
 					</div>
@@ -277,6 +277,11 @@
 
 	</div>
 	<!-- END fh5co-wrapper -->
+
+    <!-- Current Date script -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
 	<!-- jQuery -->
 	<script>
