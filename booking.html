@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js"> 
 	<head>
@@ -42,7 +41,9 @@
 	<link rel="stylesheet" href="css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="css/style.css">
-
+	
+	<!-- Swiper CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -51,116 +52,289 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
-		<style>
-		/* Booking Form Section */
-		.booking-form {
-			max-width: 600px;
-			margin: 50px auto;
+	<style>
+		/* Booking Form */
+		.booking-form-container {
+			background: white;
+			border-radius: 12px;
 			padding: 30px;
-			background-color: white;
-			border-radius: 8px;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			font-family: 'Roboto', Arial, sans-serif;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+			margin: 40px 0;
+		}
+
+		.booking-form-container .card-body {
+			padding: 0;
+		}
+
+		.form-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 20px;
+			margin-bottom: 20px;
+		}
+
+		@media (min-width: 768px) {
+			.form-grid {
+				grid-template-columns: 1fr 1fr;
+			}
 		}
 
 		.booking-form label {
 			display: block;
-			font-size: 1.5rem;
+			font-size: 14px;
+			font-weight: 600;
 			color: #333;
-			margin-top: 15px;
+			margin-bottom: 8px;
 		}
 
 		.booking-form input, 
 		.booking-form select {
 			width: 100%;
-			padding: 12px;
-			margin-top: 5px;
-			font-size: 1.5rem;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			background-color: #f9f9f9;
-			transition: border-color 0.3s ease, box-shadow 0.3s ease;
+			padding: 14px 16px;
+			font-size: 16px;
+			border: 1px solid #d1d5db;
+			border-radius: 8px;
+			background-color: #f9fafb;
+			transition: border 0.2s, box-shadow 0.2s;
+			box-sizing: border-box;
 		}
 
 		.booking-form input:focus, 
 		.booking-form select:focus {
 			border-color: orange;
-			box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+			box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.2);
 			outline: none;
 		}
 
 		.booking-form button {
 			width: 100%;
-			padding: 14px;
-			margin-top: 20px;
-			font-size: 1.5rem;
-			font-weight: bold;
+			padding: 16px;
+			font-size: 16px;
+			font-weight: 700;
 			color: white;
 			background-color: orange;
 			border: none;
-			border-radius: 5px;
+			border-radius: 8px;
 			cursor: pointer;
 			transition: background-color 0.3s ease;
+			margin-top: 20px;
 		}
 
 		.booking-form button:hover {
 			background-color: #e67e22;
 		}
 
-		/* Responsive Design */
-		@media (max-width: 768px) {
-			.booking-form {
-				padding: 20px;
+		.success-message {
+			display: none;
+			background-color: #d4edda;
+			color: #155724;
+			padding: 12px 16px;
+			border-radius: 8px;
+			margin-top: 20px;
+			border: 1px solid #c3e6cb;
+		}
+
+		/* WhatsApp Floating Button */
+		.whatsapp-float {
+			position: fixed;
+			bottom: 30px;
+			left: 30px;
+			z-index: 1000;
+			display: flex;
+			align-items: center;
+			background-color: #25D366;
+			color: white;
+			padding: 10px 15px;
+			border-radius: 50px;
+			text-decoration: none;
+			box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			transition: all 0.3s;
+		}
+		
+		.whatsapp-float:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+		}
+		
+		.whatsapp-float img {
+			width: 40px;
+			height: 40px;
+			margin-right: 10px;
+		}
+		
+		.whatsapp-text {
+			font-weight: 600;
+			font-size: 14px;
+			display: none;
+		}
+		
+		@media (min-width: 480px) {
+			.whatsapp-text {
+			display: inline;
 			}
 		}
 
-		  /* WhatsApp Floating Button */
-			.whatsapp-float {
-				position: fixed;
-				bottom: 30px;
-				left: 30px;
-				z-index: 1000;
-				display: flex;
-				align-items: center;
-				background-color: #25D366;
-				color: white;
-				padding: 10px 15px;
-				border-radius: 50px;
-				text-decoration: none;
-				box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-				transition: all 0.3s;
-			}
-			
-			.whatsapp-float:hover {
-				transform: scale(1.05);
-				box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-			}
-			
-			.whatsapp-float img {
-				width: 40px;
-				height: 40px;
-				margin-right: 10px;
-			}
-			
-			.whatsapp-text {
-				font-weight: 600;
-				font-size: 14px;
-				display: none;
-			}
-			
-			@media (min-width: 480px) {
-				.whatsapp-text {
-				display: inline;
-				}
-			}
+		/* Tour Packages Section */
+		.tour-packages {
+			padding: 50px 0;
+			background-color: #f9f9f9;
+		}
 
-		</style>
+		.tour-packages-heading {
+			text-align: center;
+			margin-bottom: 40px;
+		}
 
+		.tour-packages-heading h2 {
+			font-size: 32px;
+			color: #333;
+			margin-bottom: 20px;
+		}
 
+		.tour-packages-heading p {
+			font-size: 18px;
+			color: #666;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.services-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 15px;
+			margin: 30px 0;
+		}
+
+		.services-list span {
+			background-color: #f0f0f0;
+			padding: 8px 15px;
+			border-radius: 20px;
+			font-size: 14px;
+		}
+
+		.contact-details {
+			text-align: center;
+			margin: 30px 0;
+			font-size: 16px;
+		}
+
+		/* Swiper Styles */
+		.swiper {
+			width: 100%;
+			padding: 30px 0 50px 0;
+		}
+
+		.swiper-slide {
+			background-position: center;
+			background-size: cover;
+			width: 300px;
+			background: #fff;
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+		}
+
+		.swiper-slide-content {
+			padding: 20px;
+		}
+
+		.tour-title {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 10px;
+			border-bottom: 2px solid orange;
+			padding-bottom: 10px;
+		}
+
+		.tour-description {
+			font-size: 14px;
+			color: #666;
+			margin-bottom: 15px;
+			min-height: 80px;
+		}
+
+		.tour-bullets {
+			margin: 10px 0;
+			padding-left: 20px;
+		}
+
+		.tour-bullets li {
+			font-size: 14px;
+			margin-bottom: 5px;
+			color: #555;
+		}
+
+		.tour-details-container {
+			display: flex;
+			margin: 15px 0;
+			gap: 15px;
+		}
+
+		.tour-highlights, .tour-info {
+			flex: 1;
+		}
+
+		.tour-section-title {
+			font-size: 16px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 10px;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 5px;
+		}
+
+		.tour-note {
+			font-size: 14px;
+			font-style: italic;
+			color: #888;
+			margin: 10px 0;
+			padding-left: 15px;
+			border-left: 3px solid #eee;
+		}
+
+		.book-now-btn {
+			display: block;
+			width: 100%;
+			padding: 12px;
+			background-color: orange;
+			color: white;
+			text-align: center;
+			border-radius: 5px;
+			font-weight: bold;
+			margin-top: 15px;
+			text-decoration: none;
+			transition: background-color 0.3s;
+		}
+
+		.book-now-btn:hover {
+			background-color: #e67e22;
+			color: white;
+		}
+
+		.swiper-pagination-bullet-active {
+			background: orange;
+		}
+
+		.swiper-button-next, .swiper-button-prev {
+			color: orange;
+		}
+
+		@media (max-width: 768px) {
+			.tour-details-container {
+				flex-direction: column;
+			}
+			
+			.swiper-slide {
+				width: 280px;
+			}
+		}
+	</style>
 	</head>
 	<body>
 		<!-- WhatsApp Button with your requested message -->
-		<a href="https://wa.me/qr/YIH6L5AGSSG5K1?text=Hi%20I'm%20interested%20in%20your%20services." 
+		<a href="https://wa.me/27720690340?text=Hi%20I'm%20interested%20in%20your%20services." 
 		class="whatsapp-float" target="_blank">
 		<img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
 		<span class="whatsapp-text">Chat with Us</span>
@@ -178,19 +352,6 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li><a href="index.html">Home</a></li>
-							<!--li>
-								<a href="" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Just My Self</a></li>
-									<li><a href="#">Couple</a></li>
-									<li><a href="#">Family</a></li>
-									<li><a href="#">Team or Band</a></li>
-									<li><a href="#">School or Class</a></li>
-								</ul>
-							</li>
-							<li><a href="">Car</a></li>
-							<li><a href="">Flights</a></li>
-							<li><a href="">Hotel</a></li-->
 							<li><a href="gallery.html">Gallery</a></li>
 							<li><a href="brochures.html">Brochures</a></li>
 							<li><a href="pricings.html">Pricings</a></li>
@@ -204,6 +365,494 @@
 
 		<!-- end:header-top -->
 	
+		<!-- Tour Packages Section -->
+		<section class="tour-packages">
+			<div class="container">
+				<div class="tour-packages-heading">
+					<h2>African Travelogue cc "The heart of Africa"</h2>
+					<p>We can help you for!!!</p>
+					
+					<div class="services-list">
+						<span>Airport Shuttles</span>
+						<span>Sightseeing tours</span>
+						<span>Long distance tours & Transfers</span>
+						<span>Pilanesburg Safaris</span>
+						<span>Kruger National Park</span>
+						<span>Soweto & Johannesburg</span>
+						<span>The cradle of humankind & Sterkfontein cave</span>
+						<span>Lesedi cultural village and many more…</span>
+					</div>
+					
+					<div class="contact-details">
+						<p><strong>Contact Details:</strong> +27 82 840 8864 | +27 72 069 0340 -- Athisiah N</p>
+						<p><strong>Email:</strong> admin@africantravelogue.co.za | info@africantravelogue.co.za</p>
+						<p><strong>Website:</strong> www.africantravelogue.co.za</p>
+						<p><strong>Address:</strong> 103 Pongolo St, Zandspruit, 1969</p>
+						<p>Follow us on all social media platforms</p>
+					</div>
+				</div>
+				
+				<!-- Swiper -->
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
+						<!-- Tour Package 1 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Johannesburg and Soweto Tour (Full day / half day guided tour)</h3>
+								<p class="tour-description">Get to know South Africa's biggest city on a full day tour that covers all the highlights of Johannesburg and Soweto.</p>
+								
+								<ul class="tour-bullets">
+									<li>Learn about the city's history as you visit Constitutional Hill</li>
+									<li>Explore Vilakazi street, the only street in the world where two Nobel Prize winners lived</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Constitutional Hill</li>
+											<li>Nelson Mandela Bridge</li>
+											<li>Top of Africa</li>
+											<li>Apartheid Museum</li>
+											<li>Nelson Mandela House (Soweto)</li>
+											<li>Vilakazi street</li>
+											<li>Hector Peterson Memorial Palace</li>
+											<li>Soweto Museum</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R1450 (single)<br>
+										R1300 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30am</p>
+										<p><strong>Duration:</strong> 8 to 9 hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Johannesburg or Soweto tours can be done separately with different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 2 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Cradle of Humankind and Sterkfontein Caves Tour</h3>
+								<p class="tour-description">Get the most possible learning out of your visits to the Cradle of Humankind and Sterkfontein Cave.</p>
+								
+								<ul class="tour-bullets">
+									<li>Walk through Sterkfontein Caves to see fossils of hominids</li>
+									<li>Access to the exhibits at the Maropeng Visitors Centre</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Cradle of Humankind</li>
+											<li>Sterkfontein Cave</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R2880 (single)<br>
+										R1760 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM</p>
+										<p><strong>Duration:</strong> 8 to 9 Hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Cradle of humankind or Sterkfontein Caves tour can be done separately with different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 3 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Lesedi Cultural village & Lion Park Safari</h3>
+								<p class="tour-description">Lesedi Cultural Village is one of the best tourist attraction sites in Southern Africa.</p>
+								
+								<ul class="tour-bullets">
+									<li>Experience traditional songs and dance shows</li>
+									<li>Walk hand-in-trunk with elephants at the sanctuary</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Lesedi Cultural Village</li>
+											<li>Safari Lion Park</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R3150 (single)<br>
+										R2050 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 10:00 AM</p>
+										<p><strong>Duration:</strong> 7 – 8 hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Lesedi Cultural village or Lion Park safari can be done separately with different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 4 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Half Day Soweto and Apartheid Museum</h3>
+								<p class="tour-description">Soweto is a township of the city of Johannesburg where you will have the experience of our dark history.</p>
+								
+								<ul class="tour-bullets">
+									<li>See Nelson Mandela house and Desmond Tutu house in Soweto</li>
+									<li>Experience 'walking tour' in Vilakazi Street</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Apartheid Museum</li>
+											<li>Vilakazi street</li>
+											<li>Nelson Mandela House</li>
+											<li>Hector Peterson memorial place and Museum</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R1350 (single)<br>
+										R1150 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM – 1:30 PM</p>
+										<p><strong>Duration:</strong> 4 Hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Half day Soweto or Apartheid Museum can be done separately with different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 5 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Half Day City Sightseeing & Apartheid Museum</h3>
+								<p class="tour-description">Explore the City of Gold's attractions at your own pace with our half day guided tour.</p>
+								
+								<ul class="tour-bullets">
+									<li>See the city's main attractions including Mandela Bridge and Ghandhi Square</li>
+									<li>Top of Africa allowing you to see vibrant areas near Johannesburg</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Constitutional Hill</li>
+											<li>Nelson Mandela Bridge</li>
+											<li>City Sightseeing</li>
+											<li>Top of Africa</li>
+											<li>Apartheid Museum</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R1600 (single)<br>
+										R1350 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM – 1:30 PM</p>
+										<p><strong>Duration:</strong> 4 Hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Half day City Sightseeing or Apartheid Museum can be done separately with different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 6 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Safari Lion Park Experience</h3>
+								<p class="tour-description">Entertaining and educational safari tour of the lion park with our experienced guide.</p>
+								
+								<ul class="tour-bullets">
+									<li>See the lions close up as you drive on a safari vehicle</li>
+									<li>Feed the giraffe before visiting the cheetahs and wild dogs</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Safari Lion Park</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R1900 (single)<br>
+										R1650 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM – 2:30 PM</p>
+										<p><strong>Duration:</strong> 5 Hours</p>
+									</div>
+								</div>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 7 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Ukutula Lion Park (Educational tour)</h3>
+								<p class="tour-description">An amazing experience with an opportunity to interact with young lions and cheetahs.</p>
+								
+								<ul class="tour-bullets">
+									<li>Feeding demonstration with lion cubs</li>
+									<li>Guided tour to the Lion, Cheetah and Tiger enclosures</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Walk with the Lions</li>
+											<li>Interact with the Cubs</li>
+											<li>Interact with the Cheetahs</li>
+											<li>Welcome drinks and Scones</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R5800 (single)<br>
+										R3480 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 6:00 AM – 12:00 PM</p>
+										<p><strong>Duration:</strong> 5 Hours</p>
+									</div>
+								</div>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 8 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">3 Days in Kruger National Park with Panorama route</h3>
+								<p class="tour-description">Experience the South African iconic national park and its incredible animals including the famous Africa Big 5.</p>
+								
+								<ul class="tour-bullets">
+									<li>Guided open-vehicle game drive</li>
+									<li>Visit to Panorama routes makes it the best budget tour</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Panorama route</li>
+											<li>Full day Kruger Safari tour</li>
+											<li>Hotel reservation</li>
+											<li>Breakfast and lunch (excluding dinner)</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariff:</strong><br>
+										R21 000 (single)<br>
+										R19 000 (pps)</p>
+										<p><strong>Departure:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 6:00 AM</p>
+										<p><strong>Duration:</strong> 3 days</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Please note this tour is or can be taken as a Multi-day tour.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 9 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Pretoria Capital City Tour (Full / Half day guided tour)</h3>
+								<p class="tour-description">Explore the administrative capital of South Africa with its rich history and impressive architecture.</p>
+								
+								<ul class="tour-bullets">
+									<li>Learn about the history of the Afrikaner and the Great Trek</li>
+									<li>Visit iconic buildings including the Union Buildings</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Voortrekker Monument</li>
+											<li>Church Square</li>
+											<li>Union Building</li>
+											<li>Paul Kruger House</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R1500 (single)<br>
+										R1200 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM</p>
+										<p><strong>Duration:</strong> 5 – 6 Hours</p>
+									</div>
+								</div>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 10 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Pilanesburg Nature Reserve</h3>
+								<p class="tour-description">See the majesty of South African wildlife with a full-day tour from Johannesburg.</p>
+								
+								<ul class="tour-bullets">
+									<li>Travel through the reserve in an open-top 4x4 safari vehicle</li>
+									<li>Look out for the famous 'Big five' and many other species</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Pilanesburg Safari</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R3700 (single)<br>
+										R2900 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 4:00 AM or on our advice</p>
+										<p><strong>Duration:</strong> 9 – 10 hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">This tour is also available on a closed top vehicle and on different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 11 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Cullinan Diamond Mine</h3>
+								<p class="tour-description">The Cullinan Mine is renowned as a source of large, high-quality gem diamonds.</p>
+								
+								<ul class="tour-bullets">
+									<li>See where many of the world's most famous diamonds were discovered</li>
+									<li>Learn about diamond mining processes and history</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Underground Diamond mine tour (Arranged)</li>
+											<li>Surface Diamond mine tour</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R2900 (single)<br>
+										R2500 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM</p>
+										<p><strong>Duration:</strong> 6 – 7 hours</p>
+									</div>
+								</div>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+						
+						<!-- Tour Package 12 -->
+						<div class="swiper-slide">
+							<div class="swiper-slide-content">
+								<h3 class="tour-title">Elephants & Monkey Sanctuary</h3>
+								<p class="tour-description">The Elephants sanctuary offers visitors a journey into the world of the African elephant.</p>
+								
+								<ul class="tour-bullets">
+									<li>Walk hand-in-trunk with the elephants, touch, and feed them</li>
+									<li>See free-living monkeys in their natural habitat</li>
+								</ul>
+								
+								<div class="tour-details-container">
+									<div class="tour-highlights">
+										<h4 class="tour-section-title">Highlights</h4>
+										<ul class="tour-bullets">
+											<li>Walk with elephants</li>
+											<li>Feed elephants</li>
+											<li>See free-living monkeys</li>
+										</ul>
+									</div>
+									
+									<div class="tour-info">
+										<h4 class="tour-section-title">Tour Details</h4>
+										<p><strong>Tariffs:</strong><br>
+										R3560 (single)<br>
+										R2950 (pps)</p>
+										<p><strong>Departures:</strong> Daily</p>
+										<p><strong>Tour starts:</strong> 9:30 AM</p>
+										<p><strong>Duration:</strong> 6 – 7 hours</p>
+									</div>
+								</div>
+								
+								<p class="tour-note">Elephants or Monkey sanctuary can be done separately with different tariffs.</p>
+								
+								<a href="#booking-form" class="book-now-btn">Book Now</a>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+				</div>
+			</div>
+		</section>
 		
 		<div id="fh5co-car" class="fh5co-section-gray">
 			<div class="container">
@@ -214,42 +863,64 @@
 					</div>
 				</div>
 
-				<!-- Booking Form -->
-				<section class="booking-form">
-					<form id="booking-form">
-						<label for="client-name">Client's Name & Surname:</label>
-						<input type="text" id="client-name" name="client_name" required>
-
-						<label for="contact-details">Contact Details (Email or Cellphone):</label>
-						<input 
-							type="text" 
-							id="contact-details" 
-							name="contact_details" 
-							placeholder="Enter email or 10-digit phone number" 
-							pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
-							title="Enter a valid email or 10-digit phone number" 
-							required
-						>
-
-						<label for="program-request">Program Request:</label>
-						<input type="text" id="program-request" name="program_request" required>
-
-						<label for="amount-to-be-paid">Amount to be Paid:</label>
-						<input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" required>
-
-						<label for="mode-of-receipt">Mode of Receipt:</label>
-						<select id="mode-of-receipt" name="mode_of_receipt" required>
-							<option value="" disabled selected>Select Receipt Mode</option>
-							<option value="email">Email</option>
-							<option value="SMS">SMS</option>
-						</select>
-
-						<label for="online-signature">Online Signature:</label>
-						<input type="text" id="online-signature" name="online_signature" placeholder="Type your name as a signature" required>
-
+			<!-- Booking Form -->
+			<section class="booking-form-container card">
+				<div class="card-body">
+					<form id="booking-form" class="booking-form">
+						<div class="form-grid">
+							<div>
+								<label for="client-name">Client's Name & Surname</label>
+								<input type="text" id="client-name" name="client_name" placeholder="e.g. John Smith" required>
+							</div>
+							<div>
+								<label for="contact-details">Contact (Email or Phone)</label>
+								<input 
+									type="text" 
+									id="contact-details" 
+									name="contact_details" 
+									placeholder="email or 10-digit phone" 
+									pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
+									required
+								>
+							</div>
+						</div>
+						
+						<div>
+							<label for="program-request">Program Request</label>
+							<select id="program-request" name="program_request" required>
+								<option value="" disabled selected>Select a tour package</option>
+								<!-- Options will be populated by JavaScript -->
+							</select>
+						</div>
+						
+						<div class="form-grid">
+							<div>
+								<label for="amount-to-be-paid">Amount to be Paid (ZAR)</label>
+								<input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="0.00" required>
+							</div>
+							<div>
+								<label for="mode-of-receipt">Mode of Receipt</label>
+								<select id="mode-of-receipt" name="mode_of_receipt" required>
+									<option value="" disabled selected>Select Receipt Mode</option>
+									<option value="Email">Email</option>
+									<option value="SMS">SMS</option>
+								</select>
+							</div>
+						</div>
+						
+						<div>
+							<label for="online-signature">Online Signature</label>
+							<input type="text" id="online-signature" name="online_signature" placeholder="Type your full name" required>
+						</div>
+						
 						<button type="submit">Submit Booking</button>
+						
+						<div id="success-message" class="success-message">
+							Thank you! Your booking request has been submitted. We'll be in touch shortly.
+						</div>
 					</form>
-				</section>
+				</div>
+			</section>
 
 
 				<div class="row row-bottom-padded-md">
@@ -262,57 +933,6 @@
 		<footer>
 			<div id="footer">
 				<div class="container">
-					<!--div class="row row-bottom-padded-md">
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>About Us</h3>
-							<p>This is information about African Travelogue.</p>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Top Flights </h3>
-							<ul>
-								<li><a href="#">Durban</a></li>
-								<li><a href="#">Tzaneen</a></li>
-								<li><a href="#">Somewhere else</a></li>
-								<li><a href="#">Tokyo Flight</a></li>
-								<li><a href="#">New York Flights</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Top Hotels</h3>
-							<ul>
-								<li><a href="#">Boracay Hotel</a></li>
-								<li><a href="#">Dubai Hotel</a></li>
-								<li><a href="#">Singapore Hotel</a></li>
-								<li><a href="#">Manila Hotel</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Interest</h3>
-							<ul>
-								<li><a href="#">Beaches</a></li>
-								<li><a href="#">Family Travel</a></li>
-								<li><a href="#">Budget Travel</a></li>
-								<li><a href="#">Food &amp; Drink</a></li>
-								<li><a href="#">Honeymoon and Romance</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Best Places</h3>
-							<ul>
-								<li><a href="#">Boracay Beach</a></li>
-								<li><a href="#">Dubai</a></li>
-								<li><a href="#">Singapore</a></li>
-								<li><a href="#">Hongkong</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Affordable</h3>
-							<ul>
-								<li><a href="#">Food &amp; Drink</a></li>
-								<li><a href="#">Fare Flights</a></li>
-							</ul>
-						</div>
-					</div-->
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
 							<p class="fh5co-social-icons">
@@ -335,13 +955,7 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-
-    <!-- Current Date script -->
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
-
-	<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
@@ -366,6 +980,14 @@
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	
+	<!-- Swiper JS -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+	<!-- Current Date script -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
 		<!--Start of Tawk.to Script-->
 		<script type="text/javascript">
@@ -396,7 +1018,102 @@
 				// Reset the form fields
 				event.target.reset();
 			});
+			
+			// Initialize Swiper
+			var swiper = new Swiper(".mySwiper", {
+				slidesPerView: 1,
+				spaceBetween: 30,
+				loop: true,
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+				},
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+				breakpoints: {
+					640: {
+						slidesPerView: 1,
+						spaceBetween: 20,
+					},
+					768: {
+						slidesPerView: 2,
+						spaceBetween: 30,
+					},
+					1024: {
+						slidesPerView: 3,
+						spaceBetween: 30,
+					},
+				},
+			});
+		</script>
+
+		<script>
+		// Tour packages data
+		const tourPackages = [
+			"Johannesburg and Soweto Tour (Full day / half day guided tour)",
+			"Cradle of Humankind and Sterkfontein Caves Tour",
+			"Lesedi Cultural village & Lion Park Safari",
+			"Half Day Soweto and Apartheid Museum",
+			"Half Day City Sightseeing & Apartheid Museum",
+			"Safari Lion Park Experience",
+			"Ukutula Lion Park (Educational tour)",
+			"3 Days in Kruger National Park with Panorama route",
+			"Pretoria Capital City Tour (Full / Half day guided tour)",
+			"Pilanesburg Nature Reserve",
+			"Cullinan Diamond Mine",
+			"Elephants & Monkey Sanctuary"
+		];
+
+		// Populate the program request dropdown
+		function populateProgramRequest() {
+			const programSelect = document.getElementById('program-request');
+			
+			// Clear any existing options except the first one
+			while (programSelect.options.length > 1) {
+				programSelect.remove(1);
+			}
+			
+			// Add all tour packages to the dropdown
+			tourPackages.forEach(package => {
+				const option = document.createElement('option');
+				option.value = package;
+				option.textContent = package;
+				programSelect.appendChild(option);
+			});
+		}
+
+		// Initialize when the page loads
+		document.addEventListener('DOMContentLoaded', function() {
+			populateProgramRequest();
+			
+			// Add event listener to the form submission
+			document.getElementById('booking-form').addEventListener('submit', function(event) {
+				event.preventDefault();
+				
+				// Get the selected mode of receipt
+				const modeOfReceipt = document.getElementById('mode-of-receipt').value;
+				const programRequest = document.getElementById('program-request').value;
+				
+				// Show success message
+				const successMessage = document.getElementById('success-message');
+				successMessage.style.display = 'block';
+				successMessage.textContent = `Thanks for your interest in "${programRequest}". We will be in touch via ${modeOfReceipt}.`;
+				
+				// Scroll to success message
+				successMessage.scrollIntoView({ behavior: 'smooth' });
+				
+				// Reset the form after a short delay
+				setTimeout(() => {
+					event.target.reset();
+					// Keep the program request dropdown populated
+					populateProgramRequest();
+				}, 3000);
+			});
+		});
+
+		// The rest of your existing JavaScript remains the same
 		</script>
 	</body>
 </html>
-
