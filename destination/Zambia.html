@@ -4,302 +4,547 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zambia - African Travelogue</title>
-    <link rel="stylesheet" href="../css/style.css"> <!-- Add your CSS link -->
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-        font-family: "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
+        :root {
+            --primary: #ff6f61;
+            --primary-dark: #e65c50;
+            --secondary: #f1c40f;
+            --dark: #333;
+            --light: #f8f9fa;
+            --text: #444;
+            --text-light: #777;
+            --success: #28a745;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
 
-    /* Header Section */
-    header {
-        background: url('../images/Zambia\ overland\ experience2.jpg') no-repeat center center/cover;
-        height: 60vh; /* Fill the entire viewport height */
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
 
-    header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4); /* Dark overlay */
-        z-index: 1;
-    }
+        /* Header Section */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../images/Zambia\ overland\ experience2.jpg') no-repeat center center/cover;
+            height: 70vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    header h1 {
-        font-size: 3rem;
-        z-index: 2;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgb(255, 255, 255);
-    }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease;
+        }
 
-    header p {
-        font-size: 1.2rem;
-        z-index: 2;
-        color: #c9c9c9;
-    }
+        header p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #f1f1f1;
+            animation: fadeIn 2s ease;
+        }
 
-    /* Back Button */
-    .back-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 1.2rem;
-        color: #f1c40f;
-        text-decoration: none;
-        background: transparent;
-        padding: 5px 10px;
-        border-radius: 5px;
-        transition: color 0.3s, background 0.3s;
-        z-index: 3; /* Higher than overlay and text */
-    }
+        /* Sticky Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.1rem;
+            color: white;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-    .back-button:hover {
-        color: #000000;
-        background: #f1c40f;
-    }
+        .back-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Section Styling */
-    section {
-        padding: 40px 10%;
-        background-color: #fff;
-        margin-bottom: 20px;
-    }
+        /* Section Styling */
+        section {
+            padding: 60px 10%;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 40px auto;
+            max-width: 1200px;
+        }
 
-    section h2 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: #444;
-        border-bottom: 2px solid #ff6f61;
-        display: inline-block;
-    }
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
 
-    section ul {
-        list-style-type: none;
-    }
+        section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
 
-    section ul li {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        line-height: 1.8;
-    }
+        section ul {
+            list-style-type: none;
+        }
 
-    section p {
-        font-size: 1.1rem;
-        color: #555;
-    }
+        section ul li {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            line-height: 1.8;
+            padding-left: 25px;
+            position: relative;
+        }
 
-    /* Image Gallery */
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
+        section ul li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
 
-    .gallery img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease-in-out;
-    }
+        section p {
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
 
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
+        /* Image Gallery */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
 
-    /* Booking Form */
-    .booking-form {
-        background-color: #f8f9fa;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
-        margin: 0 auto;
-    }
+        .gallery img {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
 
-    .booking-form h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
+        .gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    .booking-form form {
-        display: flex;
-        flex-direction: column;
-    }
+        /* Enhanced Booking Form */
+        .booking-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 10%;
+            margin: 40px auto;
+            max-width: 1200px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
 
-    .booking-form label {
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #444;
-    }
+        .booking-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+            font-size: 2.5rem;
+        }
 
-    .booking-form input,
-    .booking-form select,
-    .booking-form button {
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
+        .booking-section h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    .booking-form input::placeholder {
-        font-style: italic;
-        color: #aaa;
-    }
+        .booking-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-    .booking-form button {
-        background-color: #ff6f61;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    .booking-form button:hover {
-        background-color: #e65c50;
-    }
+        .form-header h3 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
 
-    /* Footer Styling */
-    footer {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 20px 0;
-        font-size: 0.9rem;
-    }
+        .form-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
 
-    footer p {
-        margin: 0;
-    }
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: var(--success);
+            font-weight: 600;
+        }
 
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.2);
+            background-color: white;
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .amount-display {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+            margin-top: 10px;
+        }
+
+        .amount-display span {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .signature-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .payment-methods i {
+            font-size: 2rem;
+            color: var(--text-light);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .copyright-text a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .copyright-text a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 40px 5%;
+            }
+            
+            .booking-section {
+                padding: 40px 5%;
+            }
+            
+            .booking-form {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
     </style>
-    <body>
-    <!-- Back Button -->
+</head>
+<body>
+    <!-- Sticky Back Button -->
     <a href="../index.html" class="back-button">
-        &#8592; Back
+        <i class="fas fa-arrow-left"></i> Back to Home
     </a>
 
     <!-- Header Section -->
     <header>
         <h1>Discover Zambia</h1>
-        <p>Embark on an adventurous overland journey through Zambia's wild landscapes and welcoming communities.</p>
+        <p>Home to the mighty Victoria Falls and wild, authentic safari experiences</p>
     </header>
 
     <!-- High-Quality Images -->
-    <section class="gallery">
-        <img src="../images/Zambia overland experience.jpg" alt="Victoria Falls Zambia Side">
-        <img src="../images/Zambia overland experience3.jpg" alt="Zambian Safari Adventure">
+    <section class="fade-in">
+        <h2>Experience Zambia</h2>
+        <div class="gallery">
+            <img src="../images/Zambia overland experience.jpg" alt="Victoria Falls Zambia Side">
+            <img src="../images/Zambia overland experience3.jpg" alt="Zambian Safari Adventure">
+        </div>
     </section>
 
     <!-- Popular Attractions -->
-    <section class="attractions">
+    <section class="attractions fade-in">
         <h2>Popular Attractions</h2>
         <ul>
-            <li><b>Victoria Falls:</b> See the "Smoke That Thunders" from the thrilling Zambian side.</li>
-            <li><b>South Luangwa National Park:</b> Renowned for walking safaris and abundant wildlife.</li>
-            <li><b>Lower Zambezi National Park:</b> Explore the Zambezi River by canoe or boat safari.</li>
-            <li><b>Lake Tanganyika:</b> Africa’s deepest lake, perfect for diving and relaxation.</li>
-            <li><b>Kafue National Park:</b> One of Africa’s largest parks, untouched and wild.</li>
-            <li><b>Livingstone:</b> A charming town with adventure sports, museums, and cultural sites.</li> 
+            <li><b>Victoria Falls:</b> See the "Smoke That Thunders" from the thrilling Zambian side</li>
+            <li><b>South Luangwa National Park:</b> Renowned for walking safaris and abundant wildlife</li>
+            <li><b>Lower Zambezi National Park:</b> Explore the Zambezi River by canoe or boat safari</li>
+            <li><b>Lake Tanganyika:</b> Africa's deepest lake, perfect for diving and relaxation</li>
+            <li><b>Kafue National Park:</b> One of Africa's largest parks, untouched and wild</li>
+            <li><b>Livingstone:</b> A charming town with adventure sports, museums, and cultural sites</li>
         </ul>
     </section>
 
-<!-- Cultural Highlights -->
-<section class="cultural-highlights">
-    <h2>Cultural Highlights</h2>
-    <p>Experience vibrant village life, traditional ceremonies like the Kuomboka Festival, and the warmth of Zambian hospitality as you journey through this incredible land.</p>
-</section>
+    <!-- Cultural Highlights -->
+    <section class="cultural-highlights fade-in">
+        <h2>Cultural Highlights</h2>
+        <p>Experience vibrant village life, traditional ceremonies like the Kuomboka Festival, and the warmth of Zambian hospitality as you journey through this incredible land of diverse cultures and traditions.</p>
+        <p>Discover the rich heritage of Zambia's 73 ethnic groups, experience traditional music and dance performances, and learn about the country's journey to independence and its role in regional politics.</p>
+    </section>
 
-
-     <!-- Booking Form -->
-     <section class="booking-form">
-        <h2>Book Your Trip to Zambia</h2>
-        <form id="booking-form">
-            <label for="client-name">Client's Name & Surname:</label>
-            <input type="text" id="client-name" name="client_name" required>
-
-            <label for="contact-details">Contact Details (Email or Cellphone):</label>
-            <input 
-                type="text" 
-                id="contact-details" 
-                name="contact_details" 
-                placeholder="Enter email or 10-digit phone number" 
-                pattern="([0-9]{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" 
-                title="Enter a valid email or 10-digit phone number" 
-                required
-            >
-
-            <label for="program-request">Program Request:</label>
-            <input type="text" id="program-request" name="program_request" required>
-
-            <label for="amount-to-be-paid">Amount to be Paid:</label>
-            <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" required>
-
-            <label for="mode-of-receipt">Mode of Receipt:</label>
-            <select id="mode-of-receipt" name="mode_of_receipt" required>
-                <option value="" disabled selected>Select Receipt Mode</option>
-                <option value="email">Email</option>
-                <option value="SMS">SMS</option>
-            </select>
-
-            <label for="online-signature">Online Signature:</label>
-            <input type="text" id="online-signature" name="online_signature" placeholder="Type your name as a signature" required>
-
-            <button type="submit">Submit Booking</button>
-        </form>
+    <!-- Enhanced Booking Form -->
+    <section class="booking-section fade-in">
+        <h2>Book Your Zambia Adventure</h2>
+        <div class="booking-form">
+            <div class="form-header">
+                <h3>Secure Your Zambian Safari</h3>
+                <p>Fill out the form below to book your Zambia experience</p>
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure & Encrypted Booking</span>
+                </div>
+            </div>
+            
+            <form id="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name">Full Name & Surname *</label>
+                        <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cellphone">Cellphone Number *</label>
+                        <input type="tel" id="cellphone" name="cellphone" placeholder="+27 12 345 6789" pattern="[+]{1}[0-9]{1,4} [0-9]{1,3} [0-9]{3} [0-9]{4}" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="program-request">Program Request *</label>
+                    <select id="program-request" name="program_request" required>
+                        <option value="" disabled selected>Select your preferred program</option>
+                        <option value="victoria-falls">Victoria Falls Adventure</option>
+                        <option value="walking-safari">Walking Safari Experience</option>
+                        <option value="river-exploration">Zambezi River Exploration</option>
+                        <option value="cultural-villages">Cultural Village Experience</option>
+                        <option value="custom-zambia">Custom Zambia Itinerary</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount-to-be-paid">Amount to be Paid (ZAR) *</label>
+                    <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" min="0" required>
+                    <div class="amount-display">
+                        Amount: <span id="amount-display">R 0.00</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="online-signature">Online Signature *</label>
+                    <input type="text" id="online-signature" name="online_signature" placeholder="Type your full name as a digital signature" required>
+                    <p class="signature-note">By providing your signature, you agree to our terms and conditions</p>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-lock"></i> Confirm Zambia Booking
+                </button>
+                
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-amex" title="American Express"></i>
+                    <i class="fas fa-university" title="Bank Transfer"></i>
+                </div>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <ul>
-            <p class="copyright-text">&copy; <span id="current-year"></span> African Travelogue. All Rights Reserved. Designed By <a href="https://www.gamechangersites.co.za" target="blank">Game Changer Sites</a></p>
-        </ul>
+        <p class="copyright-text">&copy; <span id="current-year"></span> African Travelogue. All Rights Reserved. Designed By <a href="https://www.gamechangersites.co.za" target="blank">Game Changer Sites</a></p>
     </footer>
 
-    <!-- Current Date script -->
     <script>
+        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
-
-    <script>
-        // Add an event listener to handle the form submission
+        
+        // Update amount display in real-time
+        const amountInput = document.getElementById('amount-to-be-paid');
+        const amountDisplay = document.getElementById('amount-display');
+        
+        amountInput.addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            amountDisplay.textContent = 'R ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        });
+        
+        // Form submission handler
         document.getElementById('booking-form').addEventListener('submit', function(event) {
-            // Prevent the default form submission behavior
             event.preventDefault();
-    
-            // Get the selected mode of receipt
-            const modeOfReceipt = document.getElementById('mode-of-receipt').value;
-    
-            // Display the confirmation message
-            alert(`Thanks, we will be in touch via ${modeOfReceipt}.`);
-    
-            // Reset the form fields
-            event.target.reset();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const fullName = formData.get('full_name');
+            
+            // Show confirmation message
+            alert(`Thank you ${fullName}! Your Botswana safari booking request has been received. We will contact you shortly to confirm your adventure details and payment options.`);
+            
+            // Reset form
+            this.reset();
+            amountDisplay.textContent = 'R 0.00';
+        });
+        
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
