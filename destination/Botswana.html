@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botswana - African Travelogue</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/payment-modal.css">
     <style>
         * {
             margin: 0;
@@ -218,111 +219,98 @@
             font-size: 1rem;
         }
 
-        .security-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            color: var(--success);
-            font-weight: 600;
+        /* Enhanced Quick Booking Section */
+        .program-selection {
+            margin: 30px 0;
         }
 
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            flex: 1;
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .form-group input,
-        .form-group select {
+        .form-control {
             width: 100%;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: #f9f9f9;
+            padding: 16px 20px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            font-family: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .form-control:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.2);
-            background-color: white;
+            border-color: #ff6f61;
+            box-shadow: 0 0 0 4px rgba(255, 111, 97, 0.15);
+            background: white;
         }
 
-        .form-group input::placeholder {
-            color: #aaa;
+        .payment-actions {
+            margin: 40px 0;
+            text-align: center;
         }
 
-        .amount-display {
-            background: #f0f8ff;
-            padding: 15px;
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary);
-            margin-top: 10px;
-        }
-
-        .amount-display span {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .signature-note {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        .btn-book-now {
+            background: linear-gradient(135deg, #ff6f61, #e65c50);
             color: white;
             border: none;
-            padding: 16px 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: var(--border-radius);
+            padding: 18px 45px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            margin-top: 20px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(255, 111, 97, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3);
+        .btn-book-now:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(255, 111, 97, 0.4);
         }
 
-        .payment-methods {
+        .btn-book-now i {
+            font-size: 20px;
+        }
+
+        .payment-info {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #dee2e6;
+        }
+
+        .payment-info p {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0;
+            color: #2c3e50;
+            font-size: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .payment-methods i {
-            font-size: 2rem;
-            color: var(--text-light);
+        .payment-info p:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .payment-info i {
+            color: #ff6f61;
+            width: 20px;
+            font-size: 18px;
+        }
+
+        /* Custom Amount Group */
+        #custom-amount-group {
+            display: none;
+            margin-top: 20px;
         }
 
         /* Footer Styling */
@@ -382,9 +370,27 @@
                 padding: 30px 20px;
             }
             
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+            .btn-book-now {
+                padding: 16px 35px;
+                font-size: 16px;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .payment-info p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn-book-now {
+                padding: 14px 25px;
+                font-size: 15px;
+            }
+            
+            .form-control {
+                padding: 14px 16px;
+                font-size: 15px;
             }
         }
     </style>
@@ -430,76 +436,45 @@
         <p>Botswana's cultural heritage is deeply rooted in respect for the land and its resources. Visitors can witness traditional dances, learn about ancient hunting techniques, and experience the warm hospitality of local communities who have maintained their way of life for generations.</p>
     </section>
 
-    <!-- Enhanced Booking Form -->
+    <!-- Simplified Booking Section -->
     <section class="booking-section fade-in">
         <h2>Book Your Botswana Adventure</h2>
         <div class="booking-form">
             <div class="form-header">
-                <h3>Secure Your Safari</h3>
-                <p>Fill out the form below to book your Botswana wilderness experience</p>
-                <div class="security-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Secure & Encrypted Booking</span>
-                </div>
+                <h3>Quick Booking</h3>
+                <p>Select your program and proceed to payment</p>
             </div>
             
-            <form id="booking-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="full-name">Full Name & Surname *</label>
-                        <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="cellphone">Cellphone Number *</label>
-                        <input type="tel" id="cellphone" name="cellphone" placeholder="+27 12 345 6789" pattern="[+]{1}[0-9]{1,4} [0-9]{1,3} [0-9]{3} [0-9]{4}" required>
-                    </div>
-                </div>
-                
+            <div class="program-selection">
                 <div class="form-group">
-                    <label for="program-request">Program Request *</label>
-                    <select id="program-request" name="program_request" required>
-                        <option value="" disabled selected>Select your preferred program</option>
-                        <option value="okavango-safari">Okavango Delta Safari Experience</option>
-                        <option value="chobe-river">Chobe River Safari Adventure</option>
-                        <option value="kalahari-exploration">Kalahari Desert Exploration</option>
-                        <option value="cultural-immersion">Cultural Immersion & Village Stays</option>
-                        <option value="custom-botswana">Custom Botswana Itinerary</option>
+                    <label for="simple-program">Select Program *</label>
+                    <select id="simple-program" class="form-control">
+                        <option value="">Choose a program...</option>
+                        <option value="okavango-safari">Okavango Delta Safari - R 2,500</option>
+                        <option value="chobe-river">Chobe River Safari Adventure - R 3,200</option>
+                        <option value="kalahari-exploration">Kalahari Desert Exploration - R 2,800</option>
+                        <option value="cultural-immersion">Cultural Immersion & Village Stays - R 2,200</option>
+                        <option value="custom">Custom Itinerary</option>
                     </select>
                 </div>
                 
-                <div class="form-group">
-                    <label for="amount-to-be-paid">Amount to be Paid (ZAR) *</label>
-                    <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" min="0" required>
-                    <div class="amount-display">
-                        Amount: <span id="amount-display">R 0.00</span>
-                    </div>
+                <div class="form-group" id="custom-amount-group">
+                    <label for="custom-amount">Custom Amount (ZAR) *</label>
+                    <input type="number" id="custom-amount" class="form-control" min="500" step="0.01" placeholder="Enter amount">
                 </div>
-                
-                <div class="form-group">
-                    <label for="online-signature">Online Signature *</label>
-                    <input type="text" id="online-signature" name="online_signature" placeholder="Type your full name as a digital signature" required>
-                    <p class="signature-note">By providing your signature, you agree to our terms and conditions</p>
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-lock"></i> Confirm Safari Booking
+            </div>
+            
+            <div class="payment-actions">
+                <button class="btn-book-now" onclick="openBotswanaPayment()">
+                    <i class="fas fa-lock"></i> Book Now
                 </button>
-                
-                <div class="payment-methods">
-                    <i class="fab fa-cc-visa" title="Visa"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                    <i class="fab fa-cc-amex" title="American Express"></i>
-                    <i class="fas fa-university" title="Bank Transfer"></i>
-                </div>
-            </form>
+            </div>
+            
+            <div class="payment-info">
+                <p><i class="fas fa-shield-alt"></i> Secure payment with PayPal or Credit Card</p>
+                <p><i class="fas fa-envelope"></i> Instant confirmation email</p>
+                <p><i class="fas fa-phone"></i> +27 72 069 0340 (Support)</p>
+            </div>
         </div>
     </section>
 
@@ -508,44 +483,80 @@
         <p class="copyright-text">&copy; <span id="current-year"></span> African Travelogue. All Rights Reserved. Designed By <a href="https://www.gamechangersites.co.za" target="blank">Game Changer Sites</a></p>
     </footer>
 
+    <!-- PayPal SDK with USD currency support -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Ac5iEGcRiTcBA4wV2EhlEA_bhkqZq6Ki80EPjgonnQWDKoJzpk525BM057vIYI_8zOlPHx-qd9rSUGBm&currency=USD"></script>
+
     <script>
-        // Set current year in footer
+        // Simple function to handle Botswana booking - EXACTLY like Johannesburg
+        function openBotswanaPayment() {
+            const programSelect = document.getElementById('simple-program');
+            const program = programSelect.value;
+            const programText = programSelect.options[programSelect.selectedIndex].text;
+            
+            if (!program) {
+                alert('Please select a program');
+                return;
+            }
+            
+            let amount = '';
+            const prices = {
+                'okavango-safari': '2500',
+                'chobe-river': '3200',
+                'kalahari-exploration': '2800',
+                'cultural-immersion': '2200'
+            };
+            
+            if (program === 'custom') {
+                const customAmount = document.getElementById('custom-amount').value;
+                if (!customAmount || customAmount < 500) {
+                    alert('Please enter a valid amount (minimum R 500)');
+                    return;
+                }
+                amount = customAmount;
+            } else {
+                amount = prices[program] || '';
+            }
+            
+            // Call the global payment modal - EXACTLY like Johannesburg
+            if (typeof window.openGlobalPaymentModal === 'function') {
+                window.openGlobalPaymentModal('Botswana', programText, amount);
+            } else {
+                alert('Payment system is loading. Please wait a moment and try again.');
+                console.log('Trying to load global payment script...');
+                
+                // Load the simple global payment script
+                const script = document.createElement('script');
+                script.src = '../js/global-payment.js';
+                script.onload = function() {
+                    console.log('Global payment script loaded successfully');
+                    // Try again after script loads
+                    setTimeout(() => {
+                        if (typeof window.openGlobalPaymentModal === 'function') {
+                            window.openGlobalPaymentModal('Botswana', programText, amount);
+                        } else {
+                            alert('Payment system loaded. Please click Book Now again.');
+                        }
+                    }, 500);
+                };
+                document.head.appendChild(script);
+            }
+        }
+        
+        // Program selection logic
+        document.getElementById('simple-program').addEventListener('change', function() {
+            const customGroup = document.getElementById('custom-amount-group');
+            if (this.value === 'custom') {
+                customGroup.style.display = 'block';
+            } else {
+                customGroup.style.display = 'none';
+            }
+        });
+        
+        // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Update amount display in real-time
-        const amountInput = document.getElementById('amount-to-be-paid');
-        const amountDisplay = document.getElementById('amount-display');
-        
-        amountInput.addEventListener('input', function() {
-            const amount = parseFloat(this.value) || 0;
-            amountDisplay.textContent = 'R ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        });
-        
-        // Form submission handler
-        document.getElementById('booking-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const fullName = formData.get('full_name');
-            
-            // Show confirmation message
-            alert(`Thank you ${fullName}! Your Botswana safari booking request has been received. We will contact you shortly to confirm your adventure details and payment options.`);
-            
-            // Reset form
-            this.reset();
-            amountDisplay.textContent = 'R 0.00';
-        });
-        
-        // Add smooth scrolling to all links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
+
+    <!-- Load the simple global payment script - EXACTLY like Johannesburg -->
+    <script src="../js/global-payment.js"></script>
 </body>
 </html>

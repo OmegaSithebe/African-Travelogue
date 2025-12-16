@@ -1,0 +1,419 @@
+/* Simple Payment Modal Styles */
+.payment-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.payment-modal-content {
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.payment-modal-header {
+    background: linear-gradient(135deg, #ff6f61, #e65c50);
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.header-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.3rem;
+}
+
+.header-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.payment-modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.payment-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.payment-modal-body {
+    padding: 25px;
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.form-section-title i {
+    color: #ff6f61;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group label i {
+    color: #3498db;
+    width: 16px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+    background: #f9f9f9;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3498db;
+    background: white;
+}
+
+.form-control:read-only {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.help-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.form-error {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.payment-options {
+    margin-bottom: 20px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.payment-option.selected {
+    border-color: #27ae60;
+    background: rgba(39, 174, 96, 0.05);
+}
+
+.option-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-right: 15px;
+    color: white;
+    background: linear-gradient(135deg, #003087, #009cde);
+}
+
+.option-content {
+    flex: 1;
+}
+
+.option-content h5 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+.option-content p {
+    margin: 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.option-select {
+    margin-left: 10px;
+}
+
+.custom-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+}
+
+.custom-radio.selected {
+    border-color: #27ae60;
+}
+
+.custom-radio.selected::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #27ae60;
+    border-radius: 50%;
+}
+
+.form-footer {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.support-info {
+    margin-top: 15px;
+    color: #777;
+    font-size: 0.85rem;
+}
+
+.support-info a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.support-info a:hover {
+    text-decoration: underline;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(52, 152, 219, 0.2);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.btn-close-modal,
+.btn-retry {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+    font-size: 14px;
+}
+
+.btn-close-modal {
+    background: #2c3e50;
+    color: white;
+}
+
+.btn-close-modal:hover {
+    background: #1a252f;
+}
+
+.btn-retry {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-retry:hover {
+    background: #c0392b;
+}
+
+.payment-modal-footer {
+    padding: 15px 25px;
+    background: #f8f9fa;
+    border-radius: 0 0 10px 10px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.copyright {
+    color: #777;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .payment-modal-overlay {
+        padding: 10px;
+    }
+    
+    .payment-modal-content {
+        max-height: 95vh;
+    }
+    
+    .payment-modal-header {
+        padding: 15px;
+    }
+    
+    .payment-modal-body {
+        padding: 20px;
+    }
+    
+    .header-text h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Currency Conversion Styles */
+.currency-conversion-card {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin: 20px 0;
+    border: 2px solid #d1e7ff;
+}
+
+.conversion-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.conversion-header i {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.conversion-header h5 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.conversion-body {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.conversion-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.conversion-label {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.conversion-value {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.zar-amount {
+    color: var(--primary);
+}
+
+.usd-amount {
+    color: #3498db;
+}
+
+.conversion-rate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+}

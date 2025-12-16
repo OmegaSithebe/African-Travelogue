@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Johannesburg - African Travelogue</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/payment-modal.css">
     <style>
         * {
             margin: 0;
@@ -21,6 +22,9 @@
             --text: #444;
             --text-light: #777;
             --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --info: #17a2b8;
             --border-radius: 8px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -269,18 +273,100 @@
             color: #aaa;
         }
 
-        .amount-display {
-            background: #f0f8ff;
-            padding: 15px;
+        /* Currency Display Styling */
+        .currency-display-container {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 20px;
             border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary);
-            margin-top: 10px;
+            margin: 20px 0;
+            border: 2px solid #d1e7ff;
         }
 
-        .amount-display span {
-            font-weight: bold;
-            color: var(--primary);
+        .currency-header {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .currency-header h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             font-size: 1.2rem;
+        }
+
+        .exchange-rate-info {
+            font-size: 0.9rem;
+            color: var(--info);
+            text-align: center;
+            margin-bottom: 15px;
+            background: rgba(23, 162, 184, 0.1);
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .currency-amounts {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .currency-box {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .currency-box.primary {
+            border-top: 4px solid var(--primary);
+        }
+
+        .currency-box.secondary {
+            border-top: 4px solid var(--info);
+        }
+
+        .currency-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .currency-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .zar-amount {
+            color: var(--primary);
+        }
+
+        .usd-amount {
+            color: var(--info);
+        }
+
+        .currency-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .currency-conversion {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .currency-conversion i {
+            margin: 0 10px;
         }
 
         .signature-note {
@@ -288,29 +374,6 @@
             color: var(--text-light);
             margin-top: 5px;
             font-style: italic;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            border: none;
-            padding: 16px 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3);
         }
 
         .payment-methods {
@@ -325,10 +388,46 @@
             color: var(--text-light);
         }
 
-        /* PayPal Button Container */
-        #paypal-button-container {
+        /* Payment Buttons Container */
+        .payment-buttons-container {
             margin-top: 30px;
             text-align: center;
+        }
+
+        .payment-button {
+            width: 100%;
+            padding: 16px;
+            margin: 10px 0;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .paypal-button {
+            background: linear-gradient(135deg, #003087 0%, #009cde 100%);
+            color: white;
+        }
+
+        .paypal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 48, 135, 0.3);
+        }
+
+        .card-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .card-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3);
         }
 
         .payment-instructions {
@@ -343,6 +442,23 @@
         .payment-instructions h4 {
             color: var(--dark);
             margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            text-align: center;
+            display: none;
         }
 
         /* Footer Styling */
@@ -380,6 +496,21 @@
             animation: fadeIn 1s ease;
         }
 
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
@@ -406,7 +537,278 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .currency-amounts {
+                flex-direction: column;
+            }
+            
+            .currency-box {
+                width: 100%;
+            }
         }
+
+        /* Enhanced Quick Booking Section */
+            .program-selection {
+                margin: 30px 0;
+            }
+
+            .form-control {
+                width: 100%;
+                padding: 16px 20px;
+                border: 2px solid #e0e6ed;
+                border-radius: 12px;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                background: linear-gradient(135deg, #ffffff, #f8f9fa);
+                font-family: inherit;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            }
+
+            .form-control:focus {
+                outline: none;
+                border-color: #ff6f61;
+                box-shadow: 0 0 0 4px rgba(255, 111, 97, 0.15);
+                background: white;
+            }
+
+            .form-control option {
+                padding: 12px;
+                font-size: 15px;
+            }
+
+            .payment-actions {
+                margin: 40px 0;
+                text-align: center;
+            }
+
+            .btn-book-now {
+                background: linear-gradient(135deg, #ff6f61, #e65c50);
+                color: white;
+                border: none;
+                padding: 18px 45px;
+                border-radius: 12px;
+                font-size: 18px;
+                font-weight: 700;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 8px 25px rgba(255, 111, 97, 0.3);
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            .btn-book-now::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #e65c50, #ff6f61);
+                transition: all 0.4s ease;
+                z-index: -1;
+            }
+
+            .btn-book-now:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 15px 35px rgba(255, 111, 97, 0.4);
+            }
+
+            .btn-book-now:hover::before {
+                left: 0;
+            }
+
+            .btn-book-now:active {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 20px rgba(255, 111, 97, 0.3);
+            }
+
+            .btn-book-now i {
+                font-size: 20px;
+                animation: lockPulse 2s infinite;
+            }
+
+            @keyframes lockPulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+            }
+
+            .payment-info {
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                border-radius: 12px;
+                padding: 25px;
+                margin-top: 30px;
+                border: 1px solid #dee2e6;
+            }
+
+            .payment-info p {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin: 15px 0;
+                color: #2c3e50;
+                font-size: 15px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .payment-info p:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .payment-info i {
+                color: #ff6f61;
+                width: 20px;
+                font-size: 18px;
+            }
+
+            .payment-info a {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .payment-info a:hover {
+                text-decoration: underline;
+            }
+
+            /* Custom Amount Group */
+            #custom-amount-group {
+                animation: fadeInUp 0.5s ease;
+                margin-top: 20px;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            #custom-amount-group label {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: #2c3e50;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            #custom-amount-group label::before {
+                content: '💰';
+                font-size: 18px;
+            }
+
+            /* Program Selection Enhancement */
+            #simple-program {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 20px center;
+                background-size: 16px;
+                padding-right: 50px;
+                cursor: pointer;
+            }
+
+            #simple-program option {
+                padding: 15px;
+                margin: 5px 0;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+            }
+
+            #simple-program option:hover {
+                background: linear-gradient(135deg, #ff6f61, #e65c50);
+                color: white;
+            }
+
+            /* Booking Form Header Enhancement */
+            .booking-form .form-header {
+                text-align: center;
+                margin-bottom: 40px;
+                position: relative;
+                padding-bottom: 25px;
+            }
+
+            .booking-form .form-header::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background: linear-gradient(90deg, #ff6f61, #f1c40f);
+                border-radius: 2px;
+            }
+
+            .booking-form .form-header h3 {
+                color: #2c3e50;
+                font-size: 2rem;
+                margin-bottom: 10px;
+                background: linear-gradient(135deg, #2c3e50, #4a6572);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .booking-form .form-header p {
+                color: #7f8c8d;
+                font-size: 1.1rem;
+                max-width: 500px;
+                margin: 0 auto;
+                line-height: 1.6;
+            }
+
+            /* Responsive Design for Booking Section */
+            @media (max-width: 768px) {
+                .btn-book-now {
+                    padding: 16px 35px;
+                    font-size: 16px;
+                    width: 100%;
+                    max-width: 300px;
+                }
+                
+                .payment-info {
+                    padding: 20px;
+                }
+                
+                .payment-info p {
+                    font-size: 14px;
+                }
+                
+                .booking-form .form-header h3 {
+                    font-size: 1.6rem;
+                }
+                
+                .booking-form .form-header p {
+                    font-size: 1rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .btn-book-now {
+                    padding: 14px 25px;
+                    font-size: 15px;
+                }
+                
+                .form-control {
+                    padding: 14px 16px;
+                    font-size: 15px;
+                }
+            }
     </style>
 </head>
 <body>
@@ -449,83 +851,45 @@
         <p>Experience the vibrant arts scene at the Johannesburg Art Gallery, explore the Neighbourgoods Market for local crafts and cuisine, or immerse yourself in the city's thriving music and nightlife. Johannesburg's diverse communities contribute to a rich tapestry of cultures, languages, and traditions that make it a truly unique African metropolis.</p>
     </section>
 
-    <!-- Enhanced Booking Form -->
+    <!-- Simplified Booking Section -->
     <section class="booking-section fade-in">
         <h2>Book Your Johannesburg Adventure</h2>
         <div class="booking-form">
             <div class="form-header">
-                <h3>Secure Your Trip</h3>
-                <p>Fill out the form below to book your Johannesburg experience</p>
-                <div class="security-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Secure & Encrypted Booking</span>
+                <h3>Quick Booking</h3>
+                <p>Select your program and proceed to payment</p>
+            </div>
+            
+            <div class="program-selection">
+                <div class="form-group">
+                    <label for="simple-program">Select Program *</label>
+                    <select id="simple-program" class="form-control">
+                        <option value="">Choose a program...</option>
+                        <option value="city-tour">City Highlights Tour - R 850</option>
+                        <option value="cultural-experience">Cultural & Historical Experience - R 1200</option>
+                        <option value="soweto-tour">Soweto & Apartheid Museum - R 950</option>
+                        <option value="gold-reef">Gold Reef City Adventure - R 1100</option>
+                        <option value="custom">Custom Itinerary</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="custom-amount-group" style="display: none;">
+                    <label for="custom-amount">Custom Amount (ZAR) *</label>
+                    <input type="number" id="custom-amount" class="form-control" min="50" step="0.01" placeholder="Enter amount">
                 </div>
             </div>
             
-            <form id="booking-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="full-name">Full Name & Surname *</label>
-                        <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="cellphone">Cellphone Number *</label>
-                        <input type="tel" id="cellphone" name="cellphone" placeholder="+27 12 345 6789" pattern="[+]{1}[0-9]{1,4} [0-9]{1,3} [0-9]{3} [0-9]{4}" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="program-request">Program Request *</label>
-                        <select id="program-request" name="program_request" required>
-                            <option value="" disabled selected>Select your preferred program</option>
-                            <option value="city-tour">City Highlights Tour - R 850</option>
-                            <option value="cultural-experience">Cultural & Historical Experience - R 1200</option>
-                            <option value="soweto-tour">Soweto & Apartheid Museum - R 950</option>
-                            <option value="gold-reef">Gold Reef City Adventure - R 1100</option>
-                            <option value="custom">Custom Itinerary</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="amount-to-be-paid">Amount to be Paid (ZAR) *</label>
-                        <input type="number" id="amount-to-be-paid" name="amount_to_be_paid" step="0.01" placeholder="Enter amount in ZAR" min="0" required>
-                        <div class="amount-display">
-                            Amount: <span id="amount-display">R 0.00</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="online-signature">Online Signature *</label>
-                    <input type="text" id="online-signature" name="online_signature" placeholder="Type your full name as a digital signature" required>
-                    <p class="signature-note">By providing your signature, you agree to our terms and conditions</p>
-                </div>
-                
-                <!-- Payment Instructions -->
-                <div class="payment-instructions">
-                    <h4><i class="fas fa-info-circle"></i> Payment Instructions</h4>
-                    <p>Complete the form above, then click the PayPal button below to securely process your payment.</p>
-                </div>
-                
-                <!-- PayPal Button Container -->
-                <div id="paypal-button-container"></div>
-                
-                <div class="payment-methods">
-                    <i class="fab fa-cc-visa" title="Visa"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                    <i class="fab fa-cc-amex" title="American Express"></i>
-                    <i class="fab fa-cc-paypal" title="PayPal"></i>
-                </div>
-            </form>
+            <div class="payment-actions">
+                <button class="btn-book-now" onclick="openJohannesburgPayment()">
+                    <i class="fas fa-lock"></i> Book Now
+                </button>
+            </div>
+            
+            <div class="payment-info">
+                <p><i class="fas fa-shield-alt"></i> Secure payment with PayPal or Credit Card</p>
+                <p><i class="fas fa-envelope"></i> Instant confirmation email</p>
+                <p><i class="fas fa-phone"></i> +27 72 069 0340 (Support)</p>
+            </div>
         </div>
     </section>
 
@@ -534,175 +898,64 @@
         <p class="copyright-text">&copy; <span id="current-year"></span> African Travelogue. All Rights Reserved. Designed By <a href="https://www.gamechangersites.co.za" target="blank">Game Changer Sites</a></p>
     </footer>
 
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=Ac5iEGcRiTcBA4wV2EhlEA_bhkqZq6Ki80EPjgonnQWDKoJzpk525BM057vIYI_8zOlPHx-qd9rSUGBm"></script>
-    
+    <!-- PayPal SDK with USD currency support -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Ac5iEGcRiTcBA4wV2EhlEA_bhkqZq6Ki80EPjgonnQWDKoJzpk525BM057vIYI_8zOlPHx-qd9rSUGBm&currency=USD"></script>
+
     <script>
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Update amount display in real-time
-        const amountInput = document.getElementById('amount-to-be-paid');
-        const amountDisplay = document.getElementById('amount-display');
-        const programSelect = document.getElementById('program-request');
-        
-        // Set default amounts based on program selection
-        const programPrices = {
-            'city-tour': 850,
-            'cultural-experience': 1200,
-            'soweto-tour': 950,
-            'gold-reef': 1100,
-            'custom': 0
-        };
-        
-        programSelect.addEventListener('change', function() {
-            const price = programPrices[this.value] || 0;
-            amountInput.value = price;
-            updateAmountDisplay(price);
-        });
-        
-        amountInput.addEventListener('input', function() {
-            const amount = parseFloat(this.value) || 0;
-            updateAmountDisplay(amount);
-        });
-        
-        function updateAmountDisplay(amount) {
-            amountDisplay.textContent = 'R ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }
-        
-        // Initialize amount display
-        updateAmountDisplay(0);
-
-        // PayPal Integration
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color:  'blue',
-                shape:  'rect',
-                label:  'paypal',
-                height: 45
-            },
-
-            // Validate form before creating order
-            createOrder: function(data, actions) {
-                // Validate the form first
-                if (!validateForm()) {
-                    return alert('Please fill in all required fields correctly before proceeding to payment.');
-                }
-                
-                const amount = document.getElementById('amount-to-be-paid').value;
-                const program = document.getElementById('program-request').value;
-                const customerName = document.getElementById('full-name').value;
-                
-                if (amount <= 0) {
-                    return alert('Please enter a valid amount greater than 0.');
-                }
-
-                // Create the PayPal order
-                return actions.order.create({
-                    purchase_units: [{
-                        description: 'Johannesburg Tour: ' + program,
-                        amount: {
-                            currency_code: 'ZAR',
-                            value: amount
-                        }
-                    }],
-                    application_context: {
-                        shipping_preference: 'NO_SHIPPING'
-                    }
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(orderData) {
-                    // Successful capture! 
-                    console.log('Capture result', orderData);
-                    
-                    // Extract transaction details
-                    const transaction = orderData.purchase_units[0].payments.captures[0];
-                    const customerName = document.getElementById('full-name').value;
-                    
-                    // Show success message
-                    alert(`Thank you ${customerName}! Your payment of R ${transaction.amount.value} was successful. Transaction ID: ${transaction.id}. We will contact you shortly to confirm your tour details.`);
-                    
-                    // Here you would typically send the data to your server
-                    saveBookingData(orderData);
-                    
-                    // Optional: Reset form
-                    document.getElementById('booking-form').reset();
-                    updateAmountDisplay(0);
-                });
-            },
-
-            // Handle cancellation
-            onCancel: function(data) {
-                alert('Payment was cancelled. You can try again anytime.');
-            },
-
-            // Handle errors
-            onError: function(err) {
-                console.error('PayPal error:', err);
-                alert('Sorry, there was an error processing your payment. Please try again.');
-            }
-
-        }).render('#paypal-button-container');
-
-        // Form validation function
-        function validateForm() {
-            const fullName = document.getElementById('full-name').value;
-            const email = document.getElementById('email').value;
-            const cellphone = document.getElementById('cellphone').value;
-            const program = document.getElementById('program-request').value;
-            const amount = document.getElementById('amount-to-be-paid').value;
-            const signature = document.getElementById('online-signature').value;
+        // Simple function to handle Johannesburg booking
+        function openJohannesburgPayment() {
+            const programSelect = document.getElementById('simple-program');
+            const program = programSelect.value;
+            const programText = programSelect.options[programSelect.selectedIndex].text;
             
-            if (!fullName || !email || !cellphone || !program || !amount || !signature) {
-                return false;
+            if (!program) {
+                alert('Please select a program');
+                return;
             }
             
-            if (amount <= 0) {
-                return false;
-            }
-            
-            return true;
-        }
-
-        // Function to save booking data (you'll replace this with actual server call)
-        function saveBookingData(orderData) {
-            const bookingData = {
-                customer_name: document.getElementById('full-name').value,
-                email: document.getElementById('email').value,
-                cellphone: document.getElementById('cellphone').value,
-                program: document.getElementById('program-request').value,
-                amount: document.getElementById('amount-to-be-paid').value,
-                signature: document.getElementById('online-signature').value,
-                paypal_order_id: orderData.id,
-                transaction_id: orderData.purchase_units[0].payments.captures[0].id,
-                status: orderData.status,
-                timestamp: new Date().toISOString()
+            let amount = '';
+            const prices = {
+                'city-tour': '850',
+                'cultural-experience': '1200',
+                'soweto-tour': '950',
+                'gold-reef': '1100'
             };
             
-            console.log('Booking data to save:', bookingData);
+            if (program === 'custom') {
+                const customAmount = document.getElementById('custom-amount').value;
+                if (!customAmount || customAmount < 50) {
+                    alert('Please enter a valid amount (minimum R 50)');
+                    return;
+                }
+                amount = customAmount;
+            } else {
+                amount = prices[program] || '';
+            }
             
-            // In a real application, you would send this data to your server
-            // Example: 
-            // fetch('/save-booking.php', {
-            //     method: 'POST',
-            //     headers: {'Content-Type': 'application/json'},
-            //     body: JSON.stringify(bookingData)
-            // });
+            // Call the global payment modal
+            if (typeof window.openGlobalPaymentModal === 'function') {
+                window.openGlobalPaymentModal('Johannesburg', programText, amount);
+            } else {
+                alert('Payment system is loading. Please wait a moment and try again.');
+                console.error('openGlobalPaymentModal is not a function');
+            }
         }
-
-        // Add smooth scrolling to all links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        
+        // Program selection logic
+        document.getElementById('simple-program').addEventListener('change', function() {
+            const customGroup = document.getElementById('custom-amount-group');
+            if (this.value === 'custom') {
+                customGroup.style.display = 'block';
+            } else {
+                customGroup.style.display = 'none';
+            }
         });
+        
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+
+    <!-- Load the simple global payment script -->
+    <script src="../js/global-payment.js"></script>
 </body>
 </html>
