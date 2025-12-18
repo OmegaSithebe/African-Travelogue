@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js">
 	<head>
@@ -47,6 +46,7 @@
 	<script src="js/payment-modal.js"></script>
 
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/enhanced-styles.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -153,6 +153,23 @@
 
 	</head>
 	<body>
+	<!-- Quick Enquiry Panel -->
+	<div id="quick-enquiry-panel">
+	<div class="enquiry-header">
+		<span class="heart">❤</span>
+		<span class="close-enquiry">&times;</span>
+		<h2>Quick Enquiry?</h2>
+		<p>Fill in the form below and our team will assist you</p>
+	</div>
+
+	<form class="enquiry-form">
+		<input type="text" placeholder="Your Name" required>
+		<input type="email" placeholder="Your Email" required>
+		<textarea placeholder="Your Message" required></textarea>
+		<button type="submit" class="btn btn-submit">Send</button>
+	</form>
+	</div>
+
     <!-- WhatsApp Button with your requested message -->
     <a href="https://wa.me/27720690340?text=Hi%20I'm%20interested%20in%20your%20services." 
     class="whatsapp-float" target="_blank">
@@ -163,6 +180,34 @@
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
+		<!-- Top Contact Bar -->
+		<div class="header-top">
+		<div class="container">
+			<div class="row">
+			
+			<!-- Left: Contact Details -->
+			<div class="col-md-6 fh5co-link">
+				<a href="tel:+27720690340">
+				<i class="icon-phone"></i> +27 72 069 0340
+				</a>
+				<a href="mailto:info@africantravelogue.com">
+				<i class="icon-mail"></i> info@africantravelogue.com
+				</a>
+			</div>
+
+			<!-- Right: Social + Buttons -->
+			<div class="col-md-6 fh5co-social text-right">
+				<a href="#"><i class="icon-facebook2"></i></a>
+				<a href="#"><i class="icon-instagram"></i></a>
+
+				<button class="btn btn-enquiry" id="openEnquiry">Quick Enquiry</button>
+				<button class="btn btn-plan">Help Me Plan</button>
+			</div>
+
+			</div>
+		</div>
+		</div>
+
 		<header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
 				<div class="nav-header">
@@ -172,19 +217,6 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
-							<!--li>
-								<a href="" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Just My Self</a></li>
-									<li><a href="#">Couple</a></li>
-									<li><a href="#">Family</a></li>
-									<li><a href="#">Team or Band</a></li>
-									<li><a href="#">School or Class</a></li>
-								</ul>
-							</li>
-							<li><a href="">Car</a></li>
-							<li><a href="">Flights</a></li>
-							<li><a href="">Hotel</a></li-->
 							<li><a href="gallery.html">Gallery</a></li>
 							<li><a href="brochures.html">Brochures</a></li>
 							<!--<li><a href="booking.html">Bookings</a></li>-->
@@ -198,85 +230,85 @@
 		</header>
 
 		<!-- end:header-top -->
-	
+
+		<!--hero section content -->
 		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover">
-				<div class="slideshow-container">
-					<div class="slide" style="background-image: url('images/elephantInMountain.jpg');"></div>
-					<div class="slide" style="background-image: url('images/Family_-_Free_State_-_Hot_air_balloon_selfie.jpg');"></div>
-					<div class="slide" style="background-image: url('images/AnimalsInTheStreet.png');"></div>
-					<div class="slide" style="background-image: url('images/sunsetDrive.jpg');"></div>
-					<div class="slide" style="background-image: url('images/Overall-Best-Time-to-Visit-South-Africa.jpg');"></div>
-				</div>
-				<div class="desc">
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-5 col-md-5">
-								<img src="images/logo.png" />
-							</div>
-							<div class="desc2 animate-box">
-								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-									<h2>The best and yet affordable travel agency in Mzansi</h2>
-									<h3>Below is a summary of what we offer as services</h3>
-									<p><a class="btn btn-primary btn-lg" href="pricings.html">Get Started</a></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div class="fh5co-overlay"></div>
+		<div class="fh5co-cover">
+			<div class="slideshow-container">
+			<!-- Three high-quality African travel images -->
+			<div class="slide active" style="background-image: url('images/sammy-wong-mDwBsRcsqbU.jpg');"></div>
+			<div class="slide" style="background-image: url('images/Family_-_Free_State_-_Hot_air_balloon_selfie.jpg');"></div>
+			<div class="slide" style="background-image: url('images/andreas-vonlanthen-2OME-KI5IYU.jpg');"></div>
 			</div>
-		</div>
-		
-		
-		<!--div id="fh5co-tours" class="fh5co-section-gray">
+			
+			<div class="desc">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Hot Tours</h3>
-						<p>These are the hottest or best travels made by previous clients.</p>
+				<div class="col-md-12 text-center">
+					<!-- Title Rotator - TOP CENTER -->
+					<div class="title-rotator">
+					<div class="rotating-title active" data-title="1">
+						<h2>Discover Africa's Wild Heart</h2>
+					</div>
+					<div class="rotating-title" data-title="2">
+						<h2>Journey Beyond Imagination</h2>
+					</div>
+					<div class="rotating-title" data-title="3">
+						<h2>Create Timeless Memories</h2>
+					</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>New York</h3>
-								<span>3 nights + Flight 5*Hotel</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Philippines</h3>
-								<span>4 nights + Flight 5*Hotel</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Hongkong</h3>
-								<span>2 nights + Flight 4*Hotel</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 text-center animate-box">
-						<p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Offers <i class="icon-arrow-right22"></i></a></p>
-					</div>
 				</div>
 			</div>
-		</div-->
+			</div>
+			
+			<!-- BOTTOM SECTION with Trust Indicators & Get Started Button -->
+			<div class="hero-bottom-section">
+			<div class="container">
+				<div class="row">
+				<div class="col-md-12 text-center">
+					<!-- Trust indicators -->
+					<div class="trust-indicators">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+						<div class="trust-item">
+							<i class="icon-star"></i>
+							<span>5-Star Rated</span>
+						</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+						<div class="trust-item">
+							<i class="icon-users"></i>
+							<span>5000+ Travelers</span>
+						</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+						<div class="trust-item">
+							<i class="icon-shield"></i>
+							<span>Fully Insured</span>
+						</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+						<div class="trust-item">
+							<i class="icon-globe"></i>
+							<span>15+ Destinations</span>
+						</div>
+						</div>
+					</div>
+					</div>
+					
+					<!-- Get Started Button -->
+					<div class="get-started-container">
+					<a href="#" class="get-started-btn" id="get-started-btn">Get Started</a>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		</div>
+
 
 		<div id="fh5co-features">
 			<div class="container">
@@ -948,6 +980,163 @@
 			});
 		});
 	</script>
+
+	<!-- Quick Form script -->
+	<script>
+	// Enhanced JavaScript with Video Modal
+	document.addEventListener('DOMContentLoaded', function() {
+		// Remove duplicate scroll indicator (keep only one)
+		const scrollIndicators = document.querySelectorAll('.scroll-indicator');
+		if (scrollIndicators.length > 1) {
+			scrollIndicators[1].remove();
+		}
+		
+		// Initialize slideshow
+		let slideIndex = 0;
+		let titleIndex = 0;
+		const slides = document.querySelectorAll('.slide');
+		const titles = document.querySelectorAll('.rotating-title');
+
+		function showSlides() {
+			slides.forEach(slide => slide.classList.remove('active'));
+			titles.forEach(title => title.classList.remove('active'));
+			
+			slideIndex = (slideIndex + 1) % slides.length;
+			titleIndex = (titleIndex + 1) % titles.length;
+			
+			slides[slideIndex].classList.add('active');
+			titles[titleIndex].classList.add('active');
+			
+			setTimeout(showSlides, 8000); // Change every 8 seconds
+		}
+
+		// Start slideshow
+		slides[0].classList.add('active');
+		titles[0].classList.add('active');
+		setTimeout(showSlides, 8000);
+
+		// Video Modal Functionality
+		const getStartedBtn = document.querySelector('.desc2 .btn-primary');
+		const videoModal = document.createElement('div');
+		videoModal.className = 'video-modal';
+		videoModal.innerHTML = `
+			<div class="video-modal-content">
+				<div class="video-header">
+					<h3>Experience African Travelogue</h3>
+					<p>Watch our exclusive showcase of premium African adventures</p>
+					<span class="close-video">&times;</span>
+				</div>
+				<div class="video-container">
+					<video controls poster="images/video-poster.jpg">
+						<source src="videos/showcase.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<div class="video-features">
+					<h4>What You'll Experience</h4>
+					<div class="feature-list">
+						<div><i class="icon-star"></i> Luxury Safari Lodges</div>
+						<div><i class="icon-users"></i> Expert Guides</div>
+						<div><i class="icon-shield"></i> Fully Insured</div>
+						<div><i class="icon-globe"></i> 15+ Destinations</div>
+						<div><i class="icon-food"></i> Gourmet Dining</div>
+						<div><i class="icon-car"></i> Private Transfers</div>
+					</div>
+				</div>
+			</div>
+		`;
+		
+		document.body.appendChild(videoModal);
+		
+		if (getStartedBtn) {
+			getStartedBtn.addEventListener('click', function(e) {
+				e.preventDefault();
+				videoModal.classList.add('active');
+			});
+		}
+		
+		document.querySelector('.close-video').addEventListener('click', function() {
+			videoModal.classList.remove('active');
+			const video = videoModal.querySelector('video');
+			video.pause();
+		});
+		
+		// Close modal when clicking outside
+		videoModal.addEventListener('click', function(e) {
+			if (e.target === videoModal) {
+				videoModal.classList.remove('active');
+				const video = videoModal.querySelector('video');
+				video.pause();
+			}
+		});
+
+		// Quick Enquiry Panel
+		const enquiryPanel = document.getElementById('quick-enquiry-panel');
+		const openEnquiryBtn = document.getElementById('openEnquiry');
+		const closeEnquiryBtn = document.querySelector('.close-enquiry');
+
+		if (openEnquiryBtn && enquiryPanel) {
+			openEnquiryBtn.addEventListener('click', function() {
+				enquiryPanel.classList.add('active');
+			});
+		}
+
+		if (closeEnquiryBtn && enquiryPanel) {
+			closeEnquiryBtn.addEventListener('click', function() {
+				enquiryPanel.classList.remove('active');
+			});
+		}
+
+		// Close enquiry panel when clicking outside
+		document.addEventListener('click', function(e) {
+			if (enquiryPanel && enquiryPanel.classList.contains('active') && 
+				!enquiryPanel.contains(e.target) && 
+				e.target !== openEnquiryBtn) {
+				enquiryPanel.classList.remove('active');
+			}
+		});
+
+		// Smooth scroll
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function(e) {
+				const href = this.getAttribute('href');
+				if (href !== '#') {
+					e.preventDefault();
+					const target = document.querySelector(href);
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				}
+			});
+		});
+
+		// Form submission
+		const enquiryForm = document.querySelector('.enquiry-form');
+		if (enquiryForm) {
+			enquiryForm.addEventListener('submit', function(e) {
+				e.preventDefault();
+				// Here you would typically send the form data to your server
+				alert('Thank you for your enquiry! Our travel experts will contact you within 24 hours.');
+				this.reset();
+				enquiryPanel.classList.remove('active');
+			});
+		}
+
+		// Enhance menu items
+		document.querySelectorAll('#fh5co-primary-menu > li').forEach(item => {
+			item.addEventListener('mouseenter', function() {
+				this.style.transform = 'translateY(-2px)';
+			});
+			item.addEventListener('mouseleave', function() {
+				this.style.transform = 'translateY(0)';
+			});
+		});
+	});
+	</script>
+
 
 	</body>
 </html>
