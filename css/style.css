@@ -1978,3 +1978,259 @@ div.cs-select span {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Freelance Opportunities Section */
+.section-gray {
+    background-color: #f5f7fa !important;
+    padding: 80px 0 !important;
+}
+
+.freelance-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.freelance-heading-section {
+    margin-bottom: 60px !important;
+    text-align: center !important;
+}
+
+.freelance-heading-section h3 {
+    font-size: 2.8rem !important;
+    color: #2c5530 !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
+    display: inline-block !important;
+    font-weight: 700 !important;
+}
+
+.freelance-heading-section h3:after {
+    content: '' !important;
+    position: absolute !important;
+    width: 70px !important;
+    height: 4px !important;
+    background-color: #e8b959 !important;
+    bottom: -10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-radius: 2px !important;
+}
+
+.freelance-heading-section p {
+    font-size: 1.2rem !important;
+    color: #555 !important;
+    max-width: 800px !important;
+    margin: 30px auto 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* Swiper Container Styles */
+.opportunities-swiper {
+    width: 100% !important;
+    height: 600px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    position: relative !important;
+}
+
+.swiper-slide {
+    position: relative !important;
+    background-size: cover !important;
+    background-position: center !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.slide-content {
+    position: relative !important;
+    z-index: 2 !important;
+    color: white !important;
+    padding: 40px !important;
+    width: 100% !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%) !important;
+}
+
+.slide-icon {
+    font-size: 2.5rem !important;
+    margin-bottom: 15px !important;
+    display: inline-block !important;
+}
+
+.slide-title {
+    font-size: 2rem !important;
+    margin-bottom: 15px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+}
+
+.slide-description {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 20px !important;
+    max-width: 600px !important;
+    opacity: 0.9 !important;
+}
+
+.slide-details {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    margin-top: 25px !important;
+}
+
+.detail-item {
+    display: flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(5px) !important;
+    padding: 10px 18px !important;
+    border-radius: 50px !important;
+    font-size: 0.95rem !important;
+}
+
+.detail-item i {
+    margin-right: 8px !important;
+    color: #e8b959 !important;
+}
+
+/* Navigation buttons */
+.swiper-button-next, .swiper-button-prev {
+    color: #e8b959 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 1.5rem !important;
+}
+
+/* Pagination */
+.swiper-pagination-bullet {
+    width: 12px !important;
+    height: 12px !important;
+    background: #fff !important;
+    opacity: 0.6 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #e8b959 !important;
+    opacity: 1 !important;
+}
+
+/* Contact button */
+.contact-btn {
+    display: inline-block !important;
+    background: linear-gradient(to right, #2c5530, #4a7c59) !important;
+    color: white !important;
+    padding: 16px 40px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    margin-top: 50px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 5px 15px rgba(44, 85, 48, 0.3) !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.contact-btn:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 25px rgba(44, 85, 48, 0.4) !important;
+    background: linear-gradient(to right, #3a6540, #5a8c69) !important;
+}
+
+.contact-btn i {
+    margin-left: 8px !important;
+}
+
+/* Adventure text styling */
+.adventure-text {
+    color: #e8b959 !important;
+    font-weight: 600 !important;
+    font-style: italic !important;
+}
+
+/* Slide overlay gradient */
+.slide-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(135deg, rgba(44, 85, 48, 0.2) 0%, rgba(232, 185, 89, 0.1) 100%) !important;
+    z-index: 1 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .opportunities-swiper {
+        height: 550px !important;
+    }
+    
+    .slide-content {
+        padding: 30px !important;
+    }
+    
+    .slide-title {
+        font-size: 1.8rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .opportunities-swiper {
+        height: 500px !important;
+    }
+    
+    .freelance-heading-section h3 {
+        font-size: 2.3rem !important;
+    }
+    
+    .slide-content {
+        padding: 25px !important;
+    }
+    
+    .slide-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .slide-description {
+        font-size: 1rem !important;
+    }
+    
+    .detail-item {
+        padding: 8px 15px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .swiper-button-next, .swiper-button-prev {
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .opportunities-swiper {
+        height: 450px !important;
+    }
+    
+    .freelance-heading-section h3 {
+        font-size: 2rem !important;
+    }
+    
+    .slide-details {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    
+    .slide-content {
+        padding: 20px !important;
+    }
+}

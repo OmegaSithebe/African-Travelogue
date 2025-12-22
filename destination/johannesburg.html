@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Johannesburg - African Travelogue</title>
+
+    <!-- Add these CDN links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/payment-modal.css">
+    <link rel="stylesheet" href="../css/destination-attractions.css">
     <style>
         * {
             margin: 0;
@@ -172,6 +176,40 @@
         .gallery img:hover {
             transform: scale(1.03);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Cultural Highlights Styling */
+        .cultural-highlights {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 40px 5%;
+            }
+            
+            section h2 {
+                font-size: 1.8rem;
+            }
         }
 
         /* Enhanced Booking Form */
@@ -832,17 +870,184 @@
         </div>
     </section>
 
-    <!-- Popular Attractions -->
-    <section class="attractions fade-in">
-        <h2>Popular Attractions</h2>
-        <ul>
-            <li><b>Gold Reef City:</b> A world-class theme park and historical site showcasing Johannesburg's gold mining heritage.</li>
-            <li><b>Constitution Hill:</b> Learn about South Africa's journey to democracy at this former prison complex.</li>
-            <li><b>Maboneng Precinct:</b> A vibrant hub for creativity, culture, and urban life in the heart of the city.</li>
-            <li><b>Apartheid Museum:</b> A powerful and moving account of South Africa's apartheid history.</li>
-            <li><b>Soweto Tour:</b> Explore the famous township and learn about its rich history and culture.</li>
-        </ul>
-    </section>
+    <!-- Enhanced Popular Attractions Section -->
+    <div class="johannesburg-section">
+        <div class="johannesburg-container">
+            <div class="johannesburg-heading-section">
+                <h2>Popular Attractions</h2>
+                <p>Discover Johannesburg's most iconic destinations through our curated selection of must-visit attractions. From historical landmarks to vibrant cultural hubs, each experience offers a unique glimpse into the heart of Jozi.</p>
+            </div>
+
+            <!-- Attractions Swiper -->
+            <div class="swiper attractions-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1: Gold Reef City -->
+                    <div class="swiper-slide attraction-slide" style="background-image: url('/images/Gold-Reef-City-experience.jpg');">
+                        <div class="attraction-overlay"></div>
+                        <div class="attraction-content">
+                            <div class="attraction-icon">🏰</div>
+                            <h2 class="attraction-title">Gold Reef City</h2>
+                            <p class="attraction-description">Step back in time at this world-class theme park and historical site showcasing Johannesburg's rich gold mining heritage. Experience thrilling rides, explore underground mine tours, and witness gold pouring demonstrations.</p>
+                            <div class="attraction-details">
+                                <div class="attraction-detail-item"><i class="fas fa-clock"></i> Full Day Experience</div>
+                                <div class="attraction-detail-item"><i class="fas fa-users"></i> Family Friendly</div>
+                                <div class="attraction-detail-item"><i class="fas fa-landmark"></i> Historical Site</div>
+                                <div class="attraction-detail-item"><i class="fas fa-ticket-alt"></i> Theme Park</div>
+                            </div>
+                            <div class="attraction-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-text">4.7/5 (1,200+ reviews)</span>
+                            </div>
+                            <button class="attraction-book-btn" onclick="bookAttraction('Gold Reef City', '1100')">
+                                Book Tour <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Constitution Hill -->
+                    <div class="swiper-slide attraction-slide" style="background-image: url('/images/constitutional-hills.jpg');">
+                        <div class="attraction-overlay"></div>
+                        <div class="attraction-content">
+                            <div class="attraction-icon">⚖️</div>
+                            <h2 class="attraction-title">Constitution Hill</h2>
+                            <p class="attraction-description">Walk through South Africa's journey to democracy at this former prison complex turned constitutional court. Explore the haunting cells of Number Four, learn about political prisoners, and witness where the nation's constitution was born.</p>
+                            <div class="attraction-details">
+                                <div class="attraction-detail-item"><i class="fas fa-history"></i> Historical Significance</div>
+                                <div class="attraction-detail-item"><i class="fas fa-gavel"></i> Constitutional Court</div>
+                                <div class="attraction-detail-item"><i class="fas fa-university"></i> Museum Complex</div>
+                                <div class="attraction-detail-item"><i class="fas fa-hourglass-half"></i> 3-4 Hour Tour</div>
+                            </div>
+                            <div class="attraction-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">4.9/5 (850+ reviews)</span>
+                            </div>
+                            <button class="attraction-book-btn" onclick="bookAttraction('Constitution Hill', '950')">
+                                Book Tour <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Maboneng Precinct -->
+                    <div class="swiper-slide attraction-slide" style="background-image: url('/images/Maboneng-precinct.png');">
+                        <div class="attraction-overlay"></div>
+                        <div class="attraction-content">
+                            <div class="attraction-icon">🎨</div>
+                            <h2 class="attraction-title">Maboneng Precinct</h2>
+                            <p class="attraction-description">Immerse yourself in Johannesburg's creative heart. This vibrant urban neighborhood features street art, boutique shops, art galleries, rooftop bars, and innovative restaurants. Experience the city's contemporary culture and artistic energy.</p>
+                            <div class="attraction-details">
+                                <div class="attraction-detail-item"><i class="fas fa-palette"></i> Art & Culture</div>
+                                <div class="attraction-detail-item"><i class="fas fa-utensils"></i> Food & Dining</div>
+                                <div class="attraction-detail-item"><i class="fas fa-shopping-bag"></i> Boutique Shopping</div>
+                                <div class="attraction-detail-item"><i class="fas fa-moon"></i> Nightlife Hub</div>
+                            </div>
+                            <div class="attraction-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">4.8/5 (1,100+ reviews)</span>
+                            </div>
+                            <button class="attraction-book-btn" onclick="bookAttraction('Maboneng Precinct', '850')">
+                                Book Tour <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Apartheid Museum -->
+                    <div class="swiper-slide attraction-slide" style="background-image: url('/images/aparthied-museum.png');">
+                        <div class="attraction-overlay"></div>
+                        <div class="attraction-content">
+                            <div class="attraction-icon">🕊️</div>
+                            <h2 class="attraction-title">Apartheid Museum</h2>
+                            <p class="attraction-description">A powerful and moving journey through South Africa's apartheid history. Through film, text, audio, and artifacts, this museum provides profound insight into the struggle for freedom and the triumph of the human spirit over adversity.</p>
+                            <div class="attraction-details">
+                                <div class="attraction-detail-item"><i class="fas fa-book"></i> Educational</div>
+                                <div class="attraction-detail-item"><i class="fas fa-heart"></i> Emotional Journey</div>
+                                <div class="attraction-detail-item"><i class="fas fa-history"></i> Historical Truth</div>
+                                <div class="attraction-detail-item"><i class="fas fa-clock"></i> 2-3 Hour Visit</div>
+                            </div>
+                            <div class="attraction-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">5.0/5 (2,300+ reviews)</span>
+                            </div>
+                            <button class="attraction-book-btn" onclick="bookAttraction('Apartheid Museum', '900')">
+                                Book Tour <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5: Soweto Tour -->
+                    <div class="swiper-slide attraction-slide" style="background-image: url('/images/soweto-experience.jpg');">
+                        <div class="attraction-overlay"></div>
+                        <div class="attraction-content">
+                            <div class="attraction-icon">🏘️</div>
+                            <h2 class="attraction-title">Soweto Experience</h2>
+                            <p class="attraction-description">Explore South Africa's most famous township, rich with history, culture, and vibrant community life. Visit Mandela House, Hector Pieterson Museum, taste local cuisine, and engage with the spirited community that shaped the nation's history.</p>
+                            <div class="attraction-details">
+                                <div class="attraction-detail-item"><i class="fas fa-home"></i> Cultural Immersion</div>
+                                <div class="attraction-detail-item"><i class="fas fa-utensils"></i> Local Cuisine</div>
+                                <div class="attraction-detail-item"><i class="fas fa-history"></i> Historical Sites</div>
+                                <div class="attraction-detail-item"><i class="fas fa-users"></i> Community Engagement</div>
+                            </div>
+                            <div class="attraction-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-text">4.8/5 (1,800+ reviews)</span>
+                            </div>
+                            <button class="attraction-book-btn" onclick="bookAttraction('Soweto Tour', '950')">
+                                Book Tour <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
+            <!-- Call to Action -->
+            <div class="attraction-cta">
+                <h3>Ready to Explore Johannesburg?</h3>
+                <p>Book your personalised Johannesburg adventure today. Our expert guides will tailor your experience to match your interests, ensuring you discover the authentic heart of this incredible city.</p>
+                <a href="#booking-section" class="cta-btn">
+                    Start Your Journey <i class="fas fa-compass"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Cultural Highlights -->
     <section class="cultural-highlights fade-in">
@@ -852,7 +1057,7 @@
     </section>
 
     <!-- Simplified Booking Section -->
-    <section class="booking-section fade-in">
+    <section class="booking-section fade-in" id="booking-section">
         <h2>Book Your Johannesburg Adventure</h2>
         <div class="booking-form">
             <div class="form-header">
@@ -893,16 +1098,144 @@
         </div>
     </section>
 
+    <!-- <section class="fade-in" id="booking-section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 60px 5%; margin: 40px auto; max-width: 1200px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--dark); font-size: 2.5rem;">Book Your Johannesburg Adventure</h2>
+        <div style="background-color: white; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow); max-width: 700px; margin: 0 auto; position: relative;">
+            <div style="text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 25px;">
+                <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #ff6f61, #f1c40f); border-radius: 2px;"></div>
+                <h3 style="color: #2c3e50; font-size: 2rem; margin-bottom: 10px; background: linear-gradient(135deg, #2c3e50, #4a6572); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Quick Booking</h3>
+                <p style="color: #7f8c8d; font-size: 1.1rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Select your program and proceed to payment</p>
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <div style="margin-bottom: 20px;">
+                    <label for="simple-program" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark);">Select Program *</label>
+                    <select id="simple-program" style="width: 100%; padding: 16px 20px; border: 2px solid #e0e6ed; border-radius: 12px; font-size: 16px; transition: all 0.3s ease; background: linear-gradient(135deg, #ffffff, #f8f9fa); font-family: inherit; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23333%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 20px center; background-size: 16px; padding-right: 50px; cursor: pointer;">
+                        <option value="">Choose a program...</option>
+                        <option value="city-tour">City Highlights Tour - R 850</option>
+                        <option value="cultural-experience">Cultural & Historical Experience - R 1200</option>
+                        <option value="soweto-tour">Soweto & Apartheid Museum - R 950</option>
+                        <option value="gold-reef">Gold Reef City Adventure - R 1100</option>
+                        <option value="custom">Custom Itinerary</option>
+                    </select>
+                </div>
+                
+                <div id="custom-amount-group" style="display: none;">
+                    <label for="custom-amount" style="display: flex; align-items: center; gap: 10px; color: #2c3e50; font-weight: 600; margin-bottom: 10px;">
+                        <span>💰</span> Custom Amount (ZAR) *
+                    </label>
+                    <input type="number" id="custom-amount" style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: var(--border-radius); font-size: 1rem; transition: var(--transition); background-color: #f9f9f9;" min="50" step="0.01" placeholder="Enter amount">
+                </div>
+            </div>
+            
+            <div style="margin: 40px 0; text-align: center;">
+                <button class="btn-book-now" onclick="openJohannesburgPayment()" style="background: linear-gradient(135deg, #ff6f61, #e65c50); color: white; border: none; padding: 18px 45px; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 8px 25px rgba(255, 111, 97, 0.3); position: relative; overflow: hidden; z-index: 1;">
+                    <i class="fas fa-lock"></i> Book Now
+                </button>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 12px; padding: 25px; margin-top: 30px; border: 1px solid #dee2e6;">
+                <p style="display: flex; align-items: center; gap: 12px; margin: 15px 0; color: #2c3e50; font-size: 15px; padding: 10px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
+                    <i class="fas fa-shield-alt" style="color: #ff6f61; width: 20px; font-size: 18px;"></i> Secure payment with PayPal or Credit Card
+                </p>
+                <p style="display: flex; align-items: center; gap: 12px; margin: 15px 0; color: #2c3e50; font-size: 15px; padding: 10px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
+                    <i class="fas fa-envelope" style="color: #ff6f61; width: 20px; font-size: 18px;"></i> Instant confirmation email
+                </p>
+                <p style="display: flex; align-items: center; gap: 12px; margin: 15px 0; color: #2c3e50; font-size: 15px; padding: 10px 0;">
+                    <i class="fas fa-phone" style="color: #ff6f61; width: 20px; font-size: 18px;"></i> +27 72 069 0340 (Support)
+                </p>
+            </div>
+        </div>
+    </section> -->
+
     <!-- Footer -->
     <footer>
         <p class="copyright-text">&copy; <span id="current-year"></span> African Travelogue. All Rights Reserved. Designed By <a href="https://www.gamechangersites.co.za" target="blank">Game Changer Sites</a></p>
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
     <!-- PayPal SDK with USD currency support -->
     <script src="https://www.paypal.com/sdk/js?client-id=Ac5iEGcRiTcBA4wV2EhlEA_bhkqZq6Ki80EPjgonnQWDKoJzpk525BM057vIYI_8zOlPHx-qd9rSUGBm&currency=USD"></script>
 
     <script>
-        // Simple function to handle Johannesburg booking
+        // Initialize Attractions Swiper
+        const attractionsSwiper = new Swiper('.attractions-swiper', {
+            direction: 'horizontal',
+            loop: true,
+            speed: 800,
+            grabCursor: true,
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'slide',
+            fadeEffect: {
+                crossFade: true
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                1024: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                }
+            }
+        });
+        
+        // Add keyboard navigation for attractions swiper
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                attractionsSwiper.slidePrev();
+            } else if (e.key === 'ArrowRight') {
+                attractionsSwiper.slideNext();
+            }
+        });
+        
+        // Add hover pause for autoplay
+        const attractionsContainer = document.querySelector('.attractions-swiper');
+        if (attractionsContainer) {
+            attractionsContainer.addEventListener('mouseenter', function() {
+                attractionsSwiper.autoplay.stop();
+            });
+            
+            attractionsContainer.addEventListener('mouseleave', function() {
+                attractionsSwiper.autoplay.start();
+            });
+        }
+        
+        // Book attraction function
+        function bookAttraction(attractionName, price) {
+            const programText = `${attractionName} Experience - R ${price}`;
+            
+            // Call the global payment modal
+            if (typeof window.openGlobalPaymentModal === 'function') {
+                window.openGlobalPaymentModal('Johannesburg', programText, price);
+            } else {
+                // Fallback to the existing booking function
+                document.getElementById('simple-program').value = 'custom';
+                document.getElementById('custom-amount').value = price;
+                openJohannesburgPayment();
+            }
+        }
+        
+        // Original booking functions
         function openJohannesburgPayment() {
             const programSelect = document.getElementById('simple-program');
             const program = programSelect.value;
@@ -932,7 +1265,6 @@
                 amount = prices[program] || '';
             }
             
-            // Call the global payment modal
             if (typeof window.openGlobalPaymentModal === 'function') {
                 window.openGlobalPaymentModal('Johannesburg', programText, amount);
             } else {
@@ -953,6 +1285,18 @@
         
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for CTA button
+        document.querySelector('.cta-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const bookingSection = document.querySelector('#booking-section');
+            if (bookingSection) {
+                bookingSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     </script>
 
     <!-- Load the simple global payment script -->

@@ -1,0 +1,405 @@
+/* Johannesburg Popular Attractions Section */
+.johannesburg-section {
+    padding: 80px 0 !important;
+    background-color: #fff !important;
+}
+
+.johannesburg-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.johannesburg-heading-section {
+    margin-bottom: 60px !important;
+    text-align: center !important;
+}
+
+.johannesburg-heading-section h2 {
+    font-size: 2.8rem !important;
+    color: #2c5530 !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
+    display: inline-block !important;
+    font-weight: 700 !important;
+}
+
+.johannesburg-heading-section h2:after {
+    content: '' !important;
+    position: absolute !important;
+    width: 100px !important;
+    height: 4px !important;
+    background-color: #e8b959 !important;
+    bottom: -10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-radius: 2px !important;
+}
+
+.johannesburg-heading-section p {
+    font-size: 1.2rem !important;
+    color: #555 !important;
+    max-width: 800px !important;
+    margin: 30px auto 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* Attractions Swiper Container Styles */
+.attractions-swiper {
+    width: 100% !important;
+    height: 650px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25) !important;
+    position: relative !important;
+    background: #000 !important;
+}
+
+.attraction-slide {
+    position: relative !important;
+    background-size: cover !important;
+    background-position: center !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    height: 100% !important;
+}
+
+.attraction-content {
+    position: relative !important;
+    z-index: 2 !important;
+    color: white !important;
+    padding: 40px !important;
+    width: 100% !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%) !important;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+
+.attraction-icon {
+    font-size: 2.5rem !important;
+    margin-bottom: 15px !important;
+    display: inline-block !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.attraction-title {
+    font-size: 2.2rem !important;
+    margin-bottom: 15px !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    letter-spacing: 0.5px !important;
+}
+
+.attraction-description {
+    font-size: 1.2rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 25px !important;
+    max-width: 700px !important;
+    opacity: 0.95 !important;
+    font-weight: 400 !important;
+}
+
+.attraction-details {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    margin-top: 25px !important;
+}
+
+.attraction-detail-item {
+    display: flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 12px 20px !important;
+    border-radius: 50px !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.attraction-detail-item i {
+    margin-right: 10px !important;
+    color: #e8b959 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Rating Stars */
+.attraction-rating {
+    margin-top: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.stars {
+    color: #FFD700 !important;
+    font-size: 1.2rem !important;
+}
+
+.rating-text {
+    font-size: 1rem !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+/* Navigation buttons */
+.attractions-swiper .swiper-button-next,
+.attractions-swiper .swiper-button-prev {
+    color: #e8b959 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 50% !important;
+    backdrop-filter: blur(5px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.attractions-swiper .swiper-button-next:hover,
+.attractions-swiper .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: scale(1.1) !important;
+    border-color: #e8b959 !important;
+}
+
+.attractions-swiper .swiper-button-next:after,
+.attractions-swiper .swiper-button-prev:after {
+    font-size: 1.8rem !important;
+    font-weight: bold !important;
+}
+
+/* Pagination */
+.attractions-swiper .swiper-pagination-bullet {
+    width: 14px !important;
+    height: 14px !important;
+    background: #fff !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+}
+
+.attractions-swiper .swiper-pagination-bullet-active {
+    background: #e8b959 !important;
+    opacity: 1 !important;
+    transform: scale(1.2) !important;
+}
+
+/* Slide overlay gradient */
+.attraction-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(135deg, rgba(44, 85, 48, 0.3) 0%, rgba(232, 185, 89, 0.2) 100%) !important;
+    z-index: 1 !important;
+}
+
+/* Book Now Button */
+.attraction-book-btn {
+    display: inline-block !important;
+    background: linear-gradient(to right, #e8b959, #d4a017) !important;
+    color: #2c5530 !important;
+    padding: 16px 35px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    margin-top: 30px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 5px 20px rgba(232, 185, 89, 0.4) !important;
+    border: none !important;
+    cursor: pointer !important;
+    letter-spacing: 0.5px !important;
+}
+
+.attraction-book-btn:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(232, 185, 89, 0.6) !important;
+    background: linear-gradient(to right, #f5c542, #e8b959) !important;
+    color: #1e3a24 !important;
+}
+
+.attraction-book-btn i {
+    margin-left: 8px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.attraction-book-btn:hover i {
+    transform: translateX(5px) !important;
+}
+
+/* Section Divider */
+.section-divider {
+    height: 4px !important;
+    width: 200px !important;
+    background: linear-gradient(to right, transparent, #e8b959, transparent) !important;
+    margin: 40px auto !important;
+    border-radius: 2px !important;
+}
+
+/* CTA Section */
+.attraction-cta {
+    text-align: center !important;
+    margin-top: 60px !important;
+    padding: 40px !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.attraction-cta h3 {
+    color: #2c5530 !important;
+    font-size: 2rem !important;
+    margin-bottom: 20px !important;
+}
+
+.attraction-cta p {
+    color: #555 !important;
+    font-size: 1.2rem !important;
+    max-width: 700px !important;
+    margin: 0 auto 30px !important;
+    line-height: 1.6 !important;
+}
+
+.cta-btn {
+    display: inline-block !important;
+    background: linear-gradient(to right, #2c5530, #4a7c59) !important;
+    color: white !important;
+    padding: 18px 45px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 5px 20px rgba(44, 85, 48, 0.3) !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(44, 85, 48, 0.4) !important;
+    background: linear-gradient(to right, #3a6540, #5a8c69) !important;
+}
+
+.cta-btn i {
+    margin-left: 10px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.cta-btn:hover i {
+    transform: translateX(5px) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .attractions-swiper {
+        height: 600px !important;
+    }
+    
+    .attraction-title {
+        font-size: 2rem !important;
+    }
+    
+    .attraction-description {
+        font-size: 1.1rem !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .attractions-swiper {
+        height: 550px !important;
+    }
+    
+    .attraction-content {
+        padding: 30px !important;
+    }
+    
+    .attraction-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .johannesburg-heading-section h2 {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .attractions-swiper {
+        height: 500px !important;
+    }
+    
+    .johannesburg-heading-section h2 {
+        font-size: 2.2rem !important;
+    }
+    
+    .attraction-content {
+        padding: 25px !important;
+    }
+    
+    .attraction-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .attraction-description {
+        font-size: 1rem !important;
+    }
+    
+    .attraction-details {
+        gap: 10px !important;
+    }
+    
+    .attraction-detail-item {
+        padding: 10px 15px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .attractions-swiper .swiper-button-next,
+    .attractions-swiper .swiper-button-prev {
+        width: 55px !important;
+        height: 55px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .attractions-swiper {
+        height: 450px !important;
+    }
+    
+    .johannesburg-heading-section h2 {
+        font-size: 2rem !important;
+    }
+    
+    .attraction-details {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .attraction-content {
+        padding: 20px !important;
+    }
+    
+    .attraction-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .attraction-description {
+        font-size: 0.95rem !important;
+    }
+    
+    .attraction-cta {
+        padding: 30px 20px !important;
+    }
+    
+    .attraction-cta h3 {
+        font-size: 1.6rem !important;
+    }
+    
+    .attraction-cta p {
+        font-size: 1.1rem !important;
+    }
+}
