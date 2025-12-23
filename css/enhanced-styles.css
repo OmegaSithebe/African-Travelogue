@@ -777,3 +777,438 @@
     display: none;
   }
 }
+
+/* FOOTER STYLES */
+#footer {
+    position: relative;
+    overflow: hidden;
+    background: none !important;
+}
+
+.footer-bg {
+    background: linear-gradient(rgba(0, 10, 20, 0.85), rgba(0, 10, 20, 0.9)), 
+                url('../images/african-sunset-background.jpg') center center no-repeat;
+    background-size: cover;
+    position: relative;
+    color: #ffffff;
+    margin-top: 0 !important;
+    border-top: none !important;
+}
+
+/* African pattern overlay */
+.footer-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23F78536' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.footer-overlay {
+    padding: 80px 0 60px !important;
+    position: relative;
+    z-index: 1;
+    background: none !important;
+}
+
+/* HEADINGS */
+#footer h3 {
+    color: #F78536 !important;
+    font-family: "Open Sans", Arial, sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    margin-bottom: 25px !important;
+    position: relative;
+    padding-bottom: 12px;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+#footer h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, #F78536, #e66a1a);
+    border-radius: 2px;
+}
+
+/* PARAGRAPHS */
+#footer p {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 15px !important;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300 !important;
+}
+
+/* LINKS */
+#footer a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 300 !important;
+}
+
+#footer a:hover {
+    color: #F78536 !important;
+    padding-left: 5px;
+    text-decoration: none !important;
+}
+
+/* FOOTER LISTS */
+.footer-links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 0;
+    transition: padding-left 0.3s ease;
+}
+
+.footer-links li:hover {
+    padding-left: 8px;
+}
+
+.footer-links li::before {
+    content: "▸";
+    color: #F78536;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links li:hover::before {
+    opacity: 1;
+}
+
+/* LOGOS */
+.footer-logos {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logos img {
+    max-height: 50px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    background: none !important;
+    border: none !important;
+}
+
+.footer-logos img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* CONTACT INFO */
+.contact-info {
+    margin-top: 15px;
+}
+
+.contact-info i {
+    color: #F78536;
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.contact-info p {
+    margin-bottom: 10px !important;
+}
+
+/* NEWSLETTER */
+.newsletter-form {
+    margin-top: 20px;
+}
+
+.newsletter-form p {
+    margin-bottom: 15px !important;
+}
+
+.newsletter-input {
+    display: flex;
+    max-width: 300px;
+}
+
+.newsletter-input input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+.newsletter-input input:focus {
+    outline: none;
+    border-color: #F78536;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.newsletter-input input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-input button {
+    background: linear-gradient(to right, #F78536, #e66a1a);
+    color: #ffffff;
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 4px 4px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.newsletter-input button:hover {
+    background: linear-gradient(to right, #e66a1a, #d45a0a);
+}
+
+/* SOCIAL ICONS */
+.footer-social {
+    margin-top: 25px;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid rgba(247, 133, 54, 0.4);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #F78536;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+}
+
+.footer-social a:hover {
+    background: #F78536;
+    color: #000000;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(247, 133, 54, 0.3);
+    text-decoration: none !important;
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.95) !important;
+    padding: 20px 0 !important;
+    border-top: 1px solid rgba(247, 133, 54, 0.2) !important;
+    margin-top: 0 !important;
+}
+
+.footer-bottom p {
+    margin: 0 !important;
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 300 !important;
+}
+
+.footer-bottom a {
+    color: #F78536 !important;
+    margin: 0 5px;
+    text-decoration: none !important;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline !important;
+    color: #ffffff !important;
+}
+
+/* MAP STYLE LINK */
+.map-link {
+    display: inline-flex;
+    align-items: center;
+    color: #F78536 !important;
+    margin-top: 10px;
+    font-weight: 500;
+    text-decoration: none !important;
+}
+
+.map-link:hover {
+    color: #ffffff !important;
+}
+
+.map-link i {
+    margin-right: 8px;
+}
+
+/* SAFARI ANIMAL ICONS */
+.safari-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 25px;
+    opacity: 0.7;
+}
+
+.safari-icons i {
+    font-size: 24px;
+    color: #F78536;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.safari-icons i:hover {
+    transform: scale(1.3);
+    opacity: 1;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 992px) {
+    .footer-overlay {
+        padding: 60px 0 40px !important;
+    }
+    
+    .footer-social a {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .safari-icons {
+        gap: 20px;
+    }
+    
+    .safari-icons i {
+        font-size: 20px;
+    }
+    
+    .newsletter-input {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-overlay {
+        padding: 50px 0 30px !important;
+    }
+    
+    #footer h3 {
+        margin-top: 30px;
+    }
+    
+    .newsletter-input {
+        max-width: 100%;
+    }
+    
+    .safari-icons {
+        margin-top: 20px;
+        gap: 15px;
+    }
+    
+    .safari-icons i {
+        font-size: 18px;
+    }
+    
+    .footer-social a {
+        margin-right: 8px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-overlay {
+        padding: 40px 0 20px !important;
+    }
+    
+    .footer-social a {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .safari-icons {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .safari-icons i {
+        font-size: 16px;
+    }
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-overlay .col-md-4, .footer-overlay .col-md-2 {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.footer-overlay .col-md-4:nth-child(1) { animation-delay: 0.1s; }
+.footer-overlay .col-md-2:nth-child(2) { animation-delay: 0.2s; }
+.footer-overlay .col-md-2:nth-child(3) { animation-delay: 0.3s; }
+.footer-overlay .col-md-4:nth-child(4) { animation-delay: 0.4s; }
+
+/* IMPORTANT OVERRIDES FOR EXISTING TEMPLATE */
+#footer .container {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+}
+
+#footer .row {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+
+#footer [class*="col-"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    float: left !important;
+}
+
+/* Override any existing footer styles from main template */
+body #footer {
+    clear: both !important;
+    width: 100% !important;
+    float: none !important;
+    display: block !important;
+}
+
+/* Ensure footer appears after all content */
+#fh5co-page > *:last-child:not(#footer) {
+    margin-bottom: 0 !important;
+}
+
+#footer {
+    margin-top: 0 !important;
+}
