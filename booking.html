@@ -1128,7 +1128,57 @@
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
-	
+
+	<!-- Quick Enquiry Script -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// Quick Enquiry Panel
+			const enquiryPanel = document.getElementById('quick-enquiry-panel');
+			const openEnquiryBtn = document.getElementById('openEnquiry');
+			const closeEnquiryBtn = document.querySelector('.close-enquiry');
+
+			if (openEnquiryBtn && enquiryPanel) {
+				openEnquiryBtn.addEventListener('click', function() {
+					enquiryPanel.classList.add('active');
+				});
+			}
+
+			if (closeEnquiryBtn && enquiryPanel) {
+				closeEnquiryBtn.addEventListener('click', function() {
+					enquiryPanel.classList.remove('active');
+				});
+			}
+
+			// Close enquiry panel when clicking outside
+			document.addEventListener('click', function(e) {
+				if (enquiryPanel && enquiryPanel.classList.contains('active') && 
+					!enquiryPanel.contains(e.target) && 
+					e.target !== openEnquiryBtn) {
+					enquiryPanel.classList.remove('active');
+				}
+			});
+
+			// Form submission
+			const enquiryForm = document.querySelector('.enquiry-form');
+			if (enquiryForm) {
+				enquiryForm.addEventListener('submit', function(e) {
+					e.preventDefault();
+					alert('Thank you for your enquiry! Our travel experts will contact you within 24 hours.');
+					this.reset();
+					enquiryPanel.classList.remove('active');
+				});
+			}
+
+			// Help Me Plan button
+			const helpMePlanBtn = document.querySelector('.btn-plan');
+			if (helpMePlanBtn) {
+				helpMePlanBtn.addEventListener('click', function() {
+					window.location.href = 'booking.html';
+				});
+			}
+		});
+	</script>
+
 	<!-- Swiper JS -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

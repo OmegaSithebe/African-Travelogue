@@ -304,6 +304,14 @@
                     enquiryPanel.classList.remove('active');
                 });
             }
+
+            // Help Me Plan button
+            const helpMePlanBtn = document.querySelector('.btn-plan');
+            if (helpMePlanBtn) {
+                helpMePlanBtn.addEventListener('click', function() {
+                    window.location.href = 'booking.html';
+                });
+            }
         });
     </script>
 
